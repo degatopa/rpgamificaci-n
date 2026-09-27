@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Boceto · Tienda</title>
+<link rel="stylesheet" href="estilos.css">
+<script src="pixel.js"></script>
+<script src="interfaz.js"></script>
+<style>
+  .bolsa { display: flex; gap: 14px; align-items: center; margin: 14px 0 26px; }
+  .bolsa .chip { font-size: 23px; padding: 4px 12px; }
+  .productos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .producto { display: flex; flex-direction: column; }
+  .producto .vitrina { height: 150px; display: grid; place-items: center; margin-bottom: 14px;
+    background: radial-gradient(circle at 50% 55%, #2e3470 0 38%, #1b1e3b 72%);
+    box-shadow: 0 -3px 0 0 var(--linea), 0 3px 0 0 var(--linea), -3px 0 0 0 var(--linea), 3px 0 0 0 var(--linea); }
+  .producto .nom { font-family: "Titulo"; font-weight: 700; font-size: 18px; color: var(--texto); margin-bottom: 8px; }
+  .producto .efecto { font-size: 22px; color: var(--suave); min-height: 80px; }
+  .precio { display: flex; gap: 10px; align-items: center; margin: 12px 0 14px; font-size: 24px; }
+  .precio .chip { font-size: 23px; padding: 2px 10px; }
+  .producto .btn { width: calc(100% - 6px); }
+  .producto .nota { margin-top: 14px; }
+  .abajo { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 26px; margin-top: 30px; }
+  .abajo .it { display: flex; align-items: center; gap: 12px; font-size: 22px; margin-bottom: 10px; }
+  .abajo .it .btn { margin-left: auto; }
+  .reglas { margin: 0; padding-left: 20px; font-size: 21px; color: var(--suave); line-height: 1.2; }
+  .reglas li { margin-bottom: 8px; }
+</style>
+</head>
+<body data-pagina="tienda">
+<main class="envoltura">
+  <h1 class="pagina">TIENDA</h1>
+  <div class="suave">Todo es caro a propósito: se paga con <b>XP y oro a la vez</b>, para que cada error cueste parte de tu esfuerzo.</div>
+
+  <div class="bolsa">
+    <span class="suave">Tienes:</span>
+    <span class="chip"><span data-px="moneda" data-s="2"></span><b class="oro">640</b> oro</span>
+    <span class="chip"><span data-px="xp" data-s="2"></span><b style="color:var(--xp)">1 980</b> XP en total · nivel 7 (150/410)</span>
+    <span class="chip minimo"><span data-px="corazon" data-s="2"></span>Vida 70/100</span>
+  </div>
+
+  <div class="productos">
+    <section class="caja producto">
+      <div class="vitrina"><span data-px="pocion" data-s="7"></span></div>
+      <div class="nom">POCIÓN DE VIDA</div>
+      <div class="efecto">Llena tu vida al máximo: de 70 a <b>100 HP</b>. Es la única forma de recuperar vida.</div>
+      <div class="precio"><span class="chip"><span data-px="xp" data-s="2"></span>200 XP</span>+<span class="chip"><span data-px="moneda" data-s="2"></span>1 000 oro</span></div>
+      <span class="btn grande apagado">TE FALTAN 360 DE ORO</span>
+      <div class="nota peligro">Esta compra te bajaría al <b style="color:#fff">nivel 6</b> (330/380 XP). En este juego se puede bajar de nivel.</div>
+    </section>
+
+    <section class="caja producto dorada">
+      <div class="vitrina"><span data-px="descanso" data-s="7"></span></div>
+      <div class="nom">POCIÓN DE DESCANSO</div>
+      <div class="efecto">Protege un día: esa noche no pierdes vida por lo <b>fácil y mediano</b>. No protege de misiones grandes ni de jefes.</div>
+      <div class="precio"><span class="chip"><span data-px="xp" data-s="2"></span>100 XP</span>+<span class="chip"><span data-px="moneda" data-s="2"></span>300 oro</span></div>
+      <span class="btn grande dorado">COMPRAR</span>
+      <div class="nota ok">Te quedarían <b>340 de oro</b> y seguirías en el <b>nivel 7</b> (50/410 XP).</div>
+    </section>
+
+    <section class="caja producto">
+      <div class="vitrina"><span data-px="elixir" data-s="7"></span></div>
+      <div class="nom">MULTIPLICADOR ×2</div>
+      <div class="efecto">Duplica todo el XP que ganas durante <b>7 días</b>. Se suma al bonus de racha.</div>
+      <div class="precio"><span class="chip"><span data-px="xp" data-s="2"></span>200 XP</span>+<span class="chip"><span data-px="moneda" data-s="2"></span>1 000 oro</span></div>
+      <span class="btn grande apagado">TE FALTAN 360 DE ORO</span>
+      <div class="nota">Ganancia estimada: unos <b>900 XP extra</b> en 7 días (unos 700 netos, tras pagar su precio).</div>
+    </section>
+  </div>
+
+  <div class="abajo">
+    <section class="caja">
+      <h2 class="titulo">INVENTARIO</h2>
+      <div class="it"><span data-px="descanso" data-s="2"></span>Poción de descanso ×1<span class="btn chico">USAR HOY</span></div>
+      <div class="it tenue"><span data-px="pocion" data-s="2"></span>Poción de vida ×0</div>
+      <div class="it tenue"><span data-px="elixir" data-s="2"></span>Multiplicador ×0</div>
+    </section>
+    <section class="caja">
+      <h2 class="titulo">REGLAS</h2>
+      <ul class="reglas">
+        <li>La poción de descanso se toma <b>antes de las 3:00 a.m.</b> del día que quieres proteger.</li>
+        <li>Ese día la racha no se rompe, pero tampoco suma.</li>
+        <li>Puedes comprar pociones antes de necesitarlas y guardarlas.</li>
+      </ul>
+    </section>
+    <section class="caja" style="opacity:.75">
+      <h2 class="titulo">PRÓXIMAMENTE</h2>
+      <div style="display:flex;gap:18px;align-items:center">
+        <span data-px="corona" data-s="4"></span>
+        <div class="suave">Sombreros y accesorios para tu caballero. Se añadirán en una versión futura.</div>
+      </div>
+    </section>
+  </div>
+</main>
+</body>
+</html>

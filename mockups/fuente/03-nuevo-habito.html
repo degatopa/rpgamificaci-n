@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Boceto · Nuevo hábito</title>
+<link rel="stylesheet" href="estilos.css">
+<script src="pixel.js"></script>
+<script src="interfaz.js"></script>
+</head>
+<body data-pagina="actividades">
+<main class="envoltura">
+  <div class="migas">Actividades › <b>Nueva actividad</b></div>
+  <h1 class="pagina" style="margin-bottom:18px">NUEVA ACTIVIDAD</h1>
+
+  <div class="form-rejilla">
+    <section class="caja">
+      <div class="paso">
+        <div class="etiqueta">1 · ¿QUÉ TIPO DE ACTIVIDAD ES?</div>
+        <div class="pestanas">
+          <div class="activa"><span data-px="espada" data-s="1"></span>HÁBITO</div>
+          <div><span data-px="calendario" data-s="1"></span>MISIÓN</div>
+          <div><span data-px="corona" data-s="1"></span>JEFE FINAL</div>
+        </div>
+        <div class="ayuda"><b>Hábito:</b> algo que repites. Todos los días, algunos días de la semana, o varias veces por semana o por mes.</div>
+      </div>
+
+      <div class="paso">
+        <div class="etiqueta">2 · NOMBRE</div>
+        <div class="campo">Practicar guitarra 20 min<span class="contador">25/40</span></div>
+      </div>
+
+      <div class="paso">
+        <div class="etiqueta">3 · ¿QUÉ ESTADÍSTICA ENTRENA?</div>
+        <div class="opciones cuatro">
+          <div class="opcion stat"><div class="cab"><span data-px="cuerpo" data-s="3"></span><span class="c-cuerpo">Cuerpo</span></div><div class="det">Salud física</div></div>
+          <div class="opcion stat"><div class="cab"><span data-px="espiritu" data-s="3"></span><span class="c-espiritu">Espíritu</span></div><div class="det">Fe y calma</div></div>
+          <div class="opcion stat"><div class="cab"><span data-px="mente" data-s="3"></span><span class="c-mente">Mente</span></div><div class="det">Estudio</div></div>
+          <div class="opcion stat elegida"><div class="cab"><span data-px="creatividad" data-s="3"></span><span class="c-creatividad">Creatividad</span></div><div class="det">Crear cosas</div></div>
+        </div>
+      </div>
+
+      <div class="paso">
+        <div class="etiqueta">4 · DIFICULTAD <span class="opc">(qué tipo de enemigo será)</span></div>
+        <div class="opciones tres">
+          <div class="opcion elegida"><div class="cab"><span data-px="comun" data-s="3"></span>Fácil · Común</div><div class="det">+10 XP · +5 oro<br>Si es mínimo: −5 HP</div></div>
+          <div class="opcion"><div class="cab"><span data-px="elite" data-s="3"></span>Media · Élite</div><div class="det">+20 XP · +10 oro<br>Si es mínimo: −10 HP</div></div>
+          <div class="opcion"><div class="cab"><span data-px="minijefe" data-s="3"></span>Difícil · Mini jefe</div><div class="det">+50 XP · +20 oro<br>Si es mínimo: −25 HP</div></div>
+        </div>
+      </div>
+
+      <div class="paso">
+        <div class="etiqueta">5 · ¿CADA CUÁNTO?</div>
+        <div class="pestanas">
+          <div>CADA DÍA</div><div class="activa">DÍAS CONCRETOS</div><div>X POR SEMANA</div><div>X POR MES</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:18px;margin-top:14px">
+          <div class="dias"><span class="si">L</span><span>M</span><span class="si">X</span><span>J</span><span class="si">V</span><span>S</span><span>D</span></div>
+          <div class="ayuda" style="margin:0">Aparecerá en <b>Hoy</b> los lunes, miércoles y viernes.</div>
+        </div>
+      </div>
+
+      <div class="paso">
+        <div class="etiqueta">6 · ¿ES UN MÍNIMO?</div>
+        <div style="display:flex;gap:16px;align-items:flex-start">
+          <span class="interruptor"></span>
+          <div class="ayuda" style="margin:0"><b>No.</b> Si lo activas, perderás <b style="color:#ff8a8d">5 HP</b> cada día que le toque y no lo cumplas. Los cambios en los mínimos cuentan desde mañana (3:00 a.m.), para que no se puedan usar como trampa.</div>
+        </div>
+      </div>
+
+      <div class="paso">
+        <div class="etiqueta">7 · NOTA <span class="opc">(opcional)</span></div>
+        <div class="campo" style="min-height:70px;align-items:flex-start"><span class="ph">Ej.: escalas y una canción nueva</span></div>
+      </div>
+
+      <div class="fila-botones">
+        <span class="btn grande">CANCELAR</span>
+        <span class="btn grande dorado"><span data-px="espada" data-s="1"></span>CREAR HÁBITO</span>
+      </div>
+    </section>
+
+    <div style="display:flex;flex-direction:column;gap:26px">
+      <section class="caja dorada">
+        <h2 class="titulo">VISTA PREVIA</h2>
+        <div class="suave" style="margin-bottom:12px">Así aparecerá en tu pantalla <b>Hoy</b>:</div>
+        <div class="enemigo compacto">
+          <div class="retrato"><span data-px="comun" data-s="3"></span></div>
+          <div><div class="nombre">Practicar guitarra 20 min</div>
+            <div class="meta"><span class="chip creatividad"><span data-px="creatividad" data-s="1"></span>Creatividad</span><span class="chip">Común</span><span class="chip">L · X · V</span></div></div>
+          <div class="premio oro">+10 XP<br>+5 oro</div>
+        </div>
+      </section>
+
+      <section class="caja">
+        <h2 class="titulo">RESUMEN</h2>
+        <div class="resumen-lista">
+          <div><span data-px="xp" data-s="2"></span><span>Al cumplirlo: <b class="oro">+10 XP</b> para Creatividad y para tu nivel</span></div>
+          <div><span data-px="moneda" data-s="2"></span><span>Y además <b class="oro">+5 de oro</b></span></div>
+          <div><span data-px="corazon" data-s="2"></span><span>Si no lo cumples: <b>no pierdes vida</b> (no es mínimo)</span></div>
+          <div><span data-px="calendario" data-s="2"></span><span>Aparece los <b>lunes, miércoles y viernes</b></span></div>
+          <div><span data-px="espada" data-s="2"></span><span>Empieza <b>hoy mismo</b></span></div>
+        </div>
+      </section>
+
+      <div class="nota oro">Después podrás editarlo o quitarlo desde <b>Actividades</b>. Si lo quitas, se guarda en <b>Quitadas</b> con su historial y puedes volver a ponerlo.</div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

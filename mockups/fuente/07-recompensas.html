@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Boceto · Recompensas</title>
+<link rel="stylesheet" href="estilos.css">
+<script src="pixel.js"></script>
+<script src="interfaz.js"></script>
+<style>
+  .camino { display: grid; grid-template-columns: repeat(9, 1fr); gap: 10px; text-align: center; margin-top: 6px; }
+  .rango { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px 4px 10px; }
+  .rango .n { font-family: "Titulo"; font-weight: 700; font-size: 12px; color: var(--suave); }
+  .rango .nv { font-size: 20px; color: var(--tenue); }
+  .rango.pasado .n { color: var(--texto); }
+  .rango.actual { background: #2c2a3c; box-shadow: 0 -3px 0 0 var(--oro), 0 3px 0 0 var(--oro), -3px 0 0 0 var(--oro), 3px 0 0 0 var(--oro); }
+  .rango.actual .n { color: var(--oro); }
+  .rango .tu { font-family: "Titulo"; font-weight: 700; font-size: 11px; background: var(--oro); color: #241800; padding: 3px 6px; }
+  .progreso { margin-top: 16px; }
+  .columnas { display: grid; grid-template-columns: 1.25fr 1fr; gap: 26px; margin-top: 26px; align-items: start; }
+  .hito { padding: 12px 14px; margin: 3px 3px 14px; background: var(--panel-2);
+    box-shadow: 0 -3px 0 0 var(--linea), 0 3px 0 0 var(--linea), -3px 0 0 0 var(--linea), 3px 0 0 0 var(--linea); }
+  .hito.listo { background: #2c2a3c; box-shadow: 0 -3px 0 0 var(--oro), 0 3px 0 0 var(--oro), -3px 0 0 0 var(--oro), 3px 0 0 0 var(--oro); }
+  .hito .cab { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+  .hito .cab .t { font-family: "Titulo"; font-weight: 700; font-size: 14px; color: var(--texto); }
+  .hito .cab .estado { margin-left: auto; font-size: 20px; color: var(--suave); }
+  .premio-fila { display: grid; grid-template-columns: 96px 1fr auto; gap: 12px; align-items: center; font-size: 22px; padding: 4px 0; }
+  .premio-fila .tipo { font-family: "Titulo"; font-weight: 700; font-size: 11px; color: var(--tenue); }
+  .premio-fila .tipo.grande { color: var(--oro); }
+  .lista-ed { display: flex; flex-direction: column; gap: 4px; margin-bottom: 18px; }
+  .lista-ed .campo { min-height: 42px; font-size: 21px; padding: 6px 12px; }
+  .lista-ed .num { font-family: "Titulo"; font-weight: 700; font-size: 12px; color: var(--tenue); width: 22px; }
+  .lista-ed .x { margin-left: auto; font-family: "Titulo"; font-weight: 700; font-size: 11px; color: var(--tenue); }
+  .sub { font-family: "Titulo"; font-weight: 700; font-size: 13px; color: var(--suave); margin: 4px 0 10px; display: flex; gap: 10px; align-items: center; }
+</style>
+</head>
+<body data-pagina="recompensas">
+<main class="envoltura">
+  <h1 class="pagina">RECOMPENSAS</h1>
+  <div class="suave" style="margin-bottom:20px">Premios de la vida real: uno <b>pequeño</b> cada 5 niveles y uno <b>grande</b> con cada rango nuevo. Si coinciden, recibes los dos.</div>
+
+  <section class="caja">
+    <h2 class="titulo"><span data-px="corona" data-s="2"></span>CAMINO AL TRONO <span class="der">Nivel récord: 7</span></h2>
+    <div class="camino">
+      <div class="rango pasado"><span data-px="k:soldado" data-s="4"></span><span class="n">SOLDADO RASO</span><span class="nv">Nv 1</span></div>
+      <div class="rango actual"><span data-px="k:escudero" data-s="4"></span><span class="n">ESCUDERO</span><span class="tu">ESTÁS AQUÍ</span></div>
+      <div class="rango"><span data-px="k:caballero" data-s="4" data-sil="#0a0b19"></span><span class="n">CABALLERO</span><span class="nv">Nv 10</span></div>
+      <div class="rango"><span data-px="k:capitan" data-s="4" data-sil="#0a0b19"></span><span class="n">CAPITÁN</span><span class="nv">Nv 15</span></div>
+      <div class="rango"><span data-px="k:comandante" data-s="4" data-sil="#0a0b19"></span><span class="n">COMANDANTE</span><span class="nv">Nv 20</span></div>
+      <div class="rango"><span data-px="k:senor" data-s="4" data-sil="#0a0b19"></span><span class="n">SEÑOR FEUDAL</span><span class="nv">Nv 30</span></div>
+      <div class="rango"><span data-px="k:duque" data-s="4" data-sil="#0a0b19"></span><span class="n">DUQUE</span><span class="nv">Nv 40</span></div>
+      <div class="rango"><span data-px="k:rey" data-s="4" data-sil="#0a0b19"></span><span class="n">REY</span><span class="nv">Nv 50</span></div>
+      <div class="rango"><span data-px="k:emperador" data-s="4" data-sil="#0a0b19"></span><span class="n">EMPERADOR</span><span class="nv">Nv 60</span></div>
+    </div>
+    <div class="progreso">
+      <div style="display:flex;font-size:21px"><span class="suave">Progreso hacia Emperador</span><b style="margin-left:auto">1 980 / 64 900 XP</b></div>
+      <div class="barra xp" style="--p:3%"><i></i></div>
+    </div>
+  </section>
+
+  <div class="columnas">
+    <section class="caja">
+      <h2 class="titulo"><span data-px="cofre" data-s="2"></span>PRÓXIMAS RECOMPENSAS</h2>
+
+      <div class="hito listo">
+        <div class="cab"><span data-px="k:escudero" data-s="2"></span><span class="t">NIVEL 5 · ESCUDERO</span><span class="estado oro">¡Conseguido!</span></div>
+        <div class="premio-fila"><span class="tipo grande">GRANDE</span><span>Cuerdas nuevas para la guitarra</span><span class="btn chico dorado">RECLAMAR</span></div>
+        <div class="premio-fila"><span class="tipo">PEQUEÑA</span><span>Ver una película</span><span class="btn chico dorado">RECLAMAR</span></div>
+      </div>
+
+      <div class="hito">
+        <div class="cab"><span data-px="k:caballero" data-s="2" data-sil="#0a0b19"></span><span class="t">NIVEL 10 · CABALLERO</span><span class="estado">Faltan 3 niveles</span></div>
+        <div class="premio-fila"><span class="tipo grande">GRANDE</span><span>Un curso de colorización</span><span></span></div>
+        <div class="premio-fila"><span class="tipo">PEQUEÑA</span><span>Comer algo que me guste</span><span></span></div>
+      </div>
+
+      <div class="hito">
+        <div class="cab"><span data-px="k:capitan" data-s="2" data-sil="#0a0b19"></span><span class="t">NIVEL 15 · CAPITÁN</span><span class="estado">Faltan 8 niveles</span></div>
+        <div class="premio-fila"><span class="tipo grande">GRANDE</span><span>Un accesorio para la cámara</span><span></span></div>
+        <div class="premio-fila"><span class="tipo">PEQUEÑA</span><span>Una salida</span><span></span></div>
+      </div>
+
+      <div class="hito">
+        <div class="cab"><span data-px="k:comandante" data-s="2" data-sil="#0a0b19"></span><span class="t">NIVEL 20 · COMANDANTE</span><span class="estado">Faltan 13 niveles</span></div>
+        <div class="nota peligro" style="margin-top:6px">Tus listas se acabaron: añade más recompensas grandes y pequeñas.</div>
+      </div>
+    </section>
+
+    <div style="display:flex;flex-direction:column;gap:26px">
+      <section class="caja">
+        <h2 class="titulo">TUS LISTAS <span class="der">En el orden en que las recibes</span></h2>
+        <div class="sub"><span data-px="cofre" data-s="1"></span>GRANDES (CAMBIO DE RANGO)</div>
+        <div class="lista-ed">
+          <div class="campo"><span class="num">1</span>Cuerdas nuevas para la guitarra<span class="x">EDITAR ✕</span></div>
+          <div class="campo"><span class="num">2</span>Un curso de colorización<span class="x">EDITAR ✕</span></div>
+          <div class="campo"><span class="num">3</span>Un accesorio para la cámara<span class="x">EDITAR ✕</span></div>
+        </div>
+        <div class="sub"><span data-px="moneda" data-s="1"></span>PEQUEÑAS (CADA 5 NIVELES)</div>
+        <div class="lista-ed">
+          <div class="campo"><span class="num">1</span>Ver una película<span class="x">EDITAR ✕</span></div>
+          <div class="campo"><span class="num">2</span>Comer algo que me guste<span class="x">EDITAR ✕</span></div>
+          <div class="campo"><span class="num">3</span>Una salida<span class="x">EDITAR ✕</span></div>
+        </div>
+        <span class="btn">+ AÑADIR RECOMPENSA</span>
+      </section>
+      <section class="caja">
+        <h2 class="titulo"><span data-px="calavera" data-s="2"></span>HISTORIAL</h2>
+        <div class="suave">Recompensas reclamadas: ninguna todavía.<br>Muertes: 0. ¡Que siga así!</div>
+      </section>
+    </div>
+  </div>
+</main>
+</body>
+</html>

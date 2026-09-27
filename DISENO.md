@@ -1,7 +1,8 @@
 # Documento de diseño — RPG de hábitos
 
-> **Estado:** v0.4 — **diseño cerrado**. Todas las reglas están decididas; lo marcado
-> con 🟡 son propuestas mías que aceptaste o que se pueden ajustar al probar el juego.
+> **Estado:** v0.5 — reglas cerradas. Nuevo: apartado de actividades (sección 11)
+> y bocetos de la interfaz (sección 12). Quedan unas preguntas sobre el apartado
+> de actividades (sección 13).
 >
 > **Leyenda:**
 > ✅ = decidido · 🟡 = propuesta (se puede cambiar) · ❓ = falta decidir
@@ -42,13 +43,14 @@ regeneración gratis: cada error se paga con el esfuerzo (XP y oro) que ya hice.
 | 15–19   | Capitán       | ~5,5 semanas                   |
 | 20–29   | Comandante    | ~2 meses                       |
 | 30–39   | Señor feudal  | ~3,5 meses                     |
-| 40–49   | Duque         | ~6 meses                       |
-| 50–59   | Rey           | ~8,5 meses                     |
-| 60+     | Emperador     | **~12 meses**                  |
+| 40–49   | Duque         | ~5,5 meses                     |
+| 50–59   | Rey           | ~8 meses                       |
+| 60+     | Emperador     | **~11 meses**                  |
 
 Los tiempos salen de la fórmula de la sección 4. Suponen que cumplo más o menos
 el 85 % de mis hábitos y que mantengo la racha de mínimos. Los jefes finales
-acortan el camino, y comprar pociones y multiplicadores lo alarga.
+acortan el camino, y comprar pociones lo alarga. Si subo la dificultad de mis
+hábitos, también llegaré antes.
 
 ✅ Después del nivel 60 se puede seguir subiendo de nivel (el rango sigue siendo Emperador).
 
@@ -80,10 +82,11 @@ cambiar por dibujos más elaborados.
 
 ✅ Cada hábito está ligado a **una** estadística.
 
-✅ Hay una **pantalla de configuración** donde puedo **agregar, editar y borrar**
-hábitos: nombre, estadística, dificultad, frecuencia y si es mínimo o no.
+✅ Hay un **apartado de Actividades** donde puedo **agregar, editar, quitar y
+volver a poner** hábitos, misiones y jefes (ver sección 11).
 
 ✅ Frecuencias posibles: **diaria**, **semanal** (X veces por semana) y **mensual** (X veces por mes).
+🟡 Además, **días concretos** de la semana (ejemplo: solo lunes, miércoles y viernes).
 
 🟡 Cada vez que marco un hábito semanal o mensual recibo su XP. La cuenta
 ("iglesia: 2/3 esta semana") sirve para los jefes de racha (ver 3.5).
@@ -102,8 +105,9 @@ hábitos: nombre, estadística, dificultad, frecuencia y si es mínimo o no.
 | Ejercicios para enderezar la espalda | Cuerpo     | Diaria     | Media      |
 | Escribir al menos una página       | Creatividad  | Diaria     | Media      |
 
-✅ En la configuración aparecen con un 🔒 candado. **No se pueden** borrar,
-pausar, cambiar de dificultad, cambiar de frecuencia ni dejar de ser mínimos.
+✅ En el apartado de actividades aparecen con un 🔒 candado. **No se pueden**
+quitar (ni siquiera temporalmente), cambiar de dificultad, cambiar de frecuencia
+ni dejar de ser mínimos. 🟡 Tampoco se pueden renombrar.
 
 *Nota:* como los datos están en mi propio navegador, técnicamente siempre podría
 hacer trampa tocando el código. El candado es un **compromiso de honor**: el juego
@@ -123,7 +127,8 @@ no ofrece ninguna forma de quitarlos.
 
 ### 3.4 Hábitos iniciales
 
-✅ Lista inicial. **Todos los hábitos son de dificultad media.**
+✅ Lista inicial. Los **4 sagrados son de dificultad media**. Todos los demás
+empiezan en **fácil**, y yo ajusto su dificultad desde el apartado de actividades.
 
 | Hábito                               | Estadística  | Frecuencia         | Dificultad     | Mínimo | Sagrado |
 |--------------------------------------|--------------|--------------------|----------------|--------|---------|
@@ -131,15 +136,18 @@ no ofrece ninguna forma de quitarlos.
 | Orar 30 min                          | Espíritu     | Diaria             | Media          | ✅ Sí  | 🔒      |
 | Ejercicios para enderezar la espalda | Cuerpo       | Diaria             | Media          | ✅ Sí  | 🔒      |
 | Escribir al menos una página         | Creatividad  | Diaria             | Media          | ✅ Sí  | 🔒      |
-| Crema del acné en la noche           | Cuerpo       | Diaria             | Media          | No     |         |
-| Actividad física 20 min              | Cuerpo       | Diaria             | Media          | No     |         |
-| Levantarme a la misma hora           | Cuerpo       | Diaria             | Media          | No     |         |
-| Comer a horas decentes               | Cuerpo       | Diaria             | Media          | No     |         |
-| Ir a la iglesia                      | Espíritu     | 3 × semana         | Media          | No     |         |
-| Aprender algo nuevo 30 min           | Creatividad  | Diaria             | Media          | No     |         |
+| Crema del acné en la noche           | Cuerpo       | Diaria             | Fácil          | No     |         |
+| Actividad física 20 min              | Cuerpo       | Diaria             | Fácil          | No     |         |
+| Levantarme a la misma hora           | Cuerpo       | Diaria             | Fácil          | No     |         |
+| Comer a horas decentes               | Cuerpo       | Diaria             | Fácil          | No     |         |
+| Ir a la iglesia                      | Espíritu     | 3 × semana         | Fácil          | No     |         |
+| Aprender algo nuevo 30 min           | Creatividad  | Diaria             | Fácil          | No     |         |
 | Tareas de la universidad             | Mente        | Misiones (ver 3.6) | Según la tarea | —      |         |
 
 ✅ Los **mínimos diarios** son configurables: puedo añadir más mínimos, pero los 4 sagrados siempre lo son.
+
+✅ La crema del acné y la actividad física son **hábitos normales**: no son
+sagrados ni mínimos, y se pueden quitar y volver a poner cuando quiera.
 
 ### 3.5 Jefes finales
 
@@ -186,24 +194,25 @@ recompensa. Las subtareas que ya hice conservan el XP que dieron en su momento.
 
 ✅ Todo el XP ganado (de cualquier estadística) suma al nivel general.
 
-🟡 Fórmula: pasar del nivel `N` al `N+1` cuesta **`250 + 45 × N` XP**.
+🟡 Fórmula: pasar del nivel `N` al `N+1` cuesta **`200 + 30 × N` XP**.
 Está ajustada para que llegar a Emperador (nivel 60) tome más o menos un año.
 
 | Nivel | XP para el siguiente | XP total acumulado para llegar |
 |-------|----------------------|--------------------------------|
-| 1     | 295                  | 0                              |
-| 5     | 475                  | 1 450                          |
-| 10    | 700                  | 4 275                          |
-| 20    | 1 150                | 13 300                         |
-| 30    | 1 600                | 26 825                         |
-| 40    | 2 050                | 44 850                         |
-| 50    | 2 500                | 67 375                         |
-| 60    | 2 950                | 94 400                         |
+| 1     | 230                  | 0                              |
+| 5     | 350                  | 1 100                          |
+| 10    | 500                  | 3 150                          |
+| 20    | 800                  | 9 500                          |
+| 30    | 1 100                | 18 850                         |
+| 40    | 1 400                | 31 200                         |
+| 50    | 1 700                | 46 550                         |
+| 60    | 2 000                | 64 900                         |
 
-*Cálculo:* con los hábitos iniciales (todos medios), un día perfecto da unos
-210 XP y unos 105 de oro. Cumpliendo el ~85 % son unos 180 XP y 90 de oro al día.
-Con el bonus máximo de racha (+50 %) se llega a unos 265 XP. Eso da ~12 meses
-hasta el nivel 60.
+*Cálculo:* con los hábitos iniciales (sagrados medios, el resto fáciles), un día
+perfecto da unos 155 XP y unos 77 de oro. Cumpliendo el ~85 % son unos 130 XP y
+65 de oro al día. Con el bonus máximo de racha (+50 %) se llega a unos 195 XP.
+Eso da ~11 meses hasta el nivel 60. Si subo dificultades, el ritmo se acelera: lo
+revisamos tras unas semanas de juego.
 
 ✅ Si gasto XP en la tienda, **puedo bajar de nivel** (ver 6.1).
 
@@ -252,8 +261,8 @@ para que cada error cueste parte del esfuerzo ya hecho.
 | **Poción de descanso**   | Ese día no pierdo vida por lo **fácil y mediano** (ver 6.2) | **100 XP + 300 oro** |
 | **Multiplicador de XP**  | **×2 XP durante 7 días**                            | **200 XP + 1 000 oro**  |
 
-Con unos 90 de oro al día, una poción de vida cuesta **~11 días de oro**, una de
-descanso **~3,5 días** y un multiplicador **~11 días**.
+Con unos 65 de oro al día, una poción de vida cuesta **~15 días de oro**, una de
+descanso **~4,5 días** y un multiplicador **~15 días**.
 
 ### 6.1 Poción de vida y bajar de nivel
 
@@ -280,7 +289,7 @@ jefe final (−50 HP), ese daño se aplica igual.
 ### 6.3 Multiplicador de XP
 
 ✅ Duplica el XP ganado durante **7 días** (desde que lo activo). Cuesta 200 XP + 1 000 oro.
-Con unos 180 XP diarios, da ~1 250 XP extra: una ganancia neta de ~1 050 XP.
+Con unos 130 XP diarios, da ~900 XP extra: una ganancia neta de ~700 XP.
 
 🟡 No se pueden acumular dos a la vez: si activo otro, se suman los días, no el multiplicador.
 
@@ -313,7 +322,7 @@ Con unos 180 XP diarios, da ~1 250 XP extra: una ganancia neta de ~1 050 XP.
 - **Grandes:** cuerdas nuevas para la guitarra, un curso de colorización, un accesorio para la cámara.
 
 🟡 Funcionamiento: cada tipo de recompensa es una **lista ordenada** que edito en
-la configuración. Al llegar a un nivel récord, el juego me muestra la siguiente
+la pantalla **Recompensas** (ver 12.7). Al llegar a un nivel récord, el juego me muestra la siguiente
 de la lista y un botón **"Reclamar"** para marcar que ya me la di. Queda un
 historial de recompensas cobradas.
 
@@ -326,7 +335,7 @@ se acaba, el juego me avisa para que añada más.
 
 ✅ Si la vida llega a 0, **muero**.
 
-✅ La penalización es **configurable**. Por defecto es **Hardcore**:
+✅ La penalización es **configurable** (en **Ajustes**). Por defecto es **Hardcore**:
 
 | Modo              | Qué pierdo |
 |-------------------|------------|
@@ -360,12 +369,132 @@ daño y las rachas que correspondan.
 
 ---
 
-## 11. Preguntas abiertas
+## 11. Apartado de actividades
 
-Ninguna. ✅ El diseño está cerrado.
+✅ Es la pantalla **Actividades** del menú. Aquí agrego, edito, quito y vuelvo a
+poner todo lo que el juego me pide hacer.
 
-Los números (fórmulas de nivel, precios, daño) se pueden ajustar después de
-jugar unas semanas, si algo resulta demasiado fácil o demasiado difícil.
+### 11.1 Tres tipos de actividad
 
-**Siguiente paso:** planificar cómo construir el juego (pantallas, orden de
-trabajo y primera versión mínima jugable).
+| Tipo           | Qué es                                            | Ejemplos                               | Dónde aparece |
+|----------------|---------------------------------------------------|----------------------------------------|---------------|
+| **Hábito**     | Algo que repito                                   | Orar 30 min, iglesia 3 veces por semana | En **Hoy**, cada día que le toque |
+| **Misión**     | Algo que hago **una sola vez**, con fecha de entrega | Ensayo de la universidad            | En **Hoy**, hasta que la complete o venza |
+| **Jefe final** | Reto grande con **barra de vida**                 | La tesis, el guion del corto           | En **Hoy**, sección de jefes |
+
+### 11.2 La lista (imagen 2)
+
+- Agrupada en: **Sagrados · Hábitos · Misiones · Jefes finales · Quitadas**.
+- 🟡 Filtros por tipo y por estadística.
+- Cada fila muestra: estadística, frecuencia o fecha, dificultad, si es mínimo y los botones **Editar** y **Quitar**.
+- Arriba, un resumen: cuánta vida puedo perder como mucho en un día (−40 HP con los 4 mínimos actuales) y cuánto puedo ganar hoy.
+- Los **sagrados** llevan 🔒 y no tienen botones.
+
+### 11.3 Crear una actividad (imágenes 3, 4 y 5)
+
+✅ Botón **"+ Nueva actividad"**. Primero elijo el tipo; el formulario cambia según el tipo.
+
+| Campo                         | Hábito                                    | Misión                    | Jefe final                  |
+|-------------------------------|-------------------------------------------|---------------------------|-----------------------------|
+| Nombre (máx. 40 letras)       | ✅                                        | ✅                        | ✅                          |
+| Estadística                   | ✅                                        | ✅                        | ✅                          |
+| Dificultad o tamaño           | Fácil / Media / Difícil                   | Pequeña / Mediana / Grande | Pequeño / Grande / Épico   |
+| Frecuencia                    | Cada día · días concretos · X por semana · X por mes | —              | —                           |
+| ¿Es mínimo?                   | ✅ (solo si es diario o de días concretos) | —                        | —                           |
+| Fecha                         | —                                         | Fecha de entrega (obligatoria) | Fecha límite (opcional) |
+| Cómo se le hace daño          | —                                         | —                         | Subtareas o racha de un hábito |
+| Recompensa especial           | —                                         | —                         | ✅                          |
+| Nota                          | opcional                                  | opcional                  | —                           |
+
+- 🟡 **Vista previa en vivo:** a la derecha se ve cómo quedará en la pantalla Hoy, y un resumen de lo que gano y lo que arriesgo.
+- 🟡 **Valores por defecto:** dificultad fácil y "no es mínimo". Así, lo nuevo nunca castiga sin que yo lo decida.
+- 🟡 **Validaciones:** el nombre es obligatorio y no se puede repetir; la fecha de entrega no puede ser pasada; un jefe por subtareas necesita al menos 2 subtareas, y un jefe por racha necesita un hábito ligado.
+- 🟡 Un hábito nuevo aparece en Hoy **ese mismo día** (si le toca).
+
+### 11.4 Editar
+
+- Se puede cambiar todo **menos el tipo** (si un hábito debía ser misión, se crea de nuevo).
+- 🟡 **Regla anti-trampa:** los cambios que afectan a la vida (dificultad, frecuencia, marcar o desmarcar como mínimo) **se aplican desde el siguiente reinicio (3:00 a.m.)**. Así no puedo, por ejemplo, quitarle el "mínimo" a un hábito a las 2:50 a.m. para no perder vida. El nombre y la nota cambian al momento.
+- 🟡 **Fecha de entrega de una misión:** se puede cambiar (a veces los profesores amplían el plazo), pero el juego pide confirmar y lo deja anotado en el historial.
+- 🟡 A un jefe por subtareas se le pueden añadir subtareas después; su barra de vida crece.
+
+### 11.5 Quitar, volver a poner y borrar
+
+- **Quitar** = guardar en **Quitadas**: la actividad desaparece de Hoy pero conserva su historial. Pide confirmación (imagen 2).
+- **Volver a poner:** desde Quitadas, vuelve con su historial.
+- **Borrar para siempre:** solo desde Quitadas, con confirmación. Se pierde su historial (el XP ya ganado se queda).
+- 🟡 Si quito un hábito que es **mínimo**, sigue contando para el día de hoy; deja de contar desde el siguiente reinicio.
+- 🟡 **Misiones y jefes:** el mismo día en que los creo los puedo borrar sin castigo (por si me equivoqué). Después, quitarlos cuenta como **rendirse**: pierdo la vida igual que si hubieran vencido.
+- Los **sagrados** no tienen botones para editar, quitar ni borrar.
+
+---
+
+## 12. Interfaz (bocetos)
+
+✅ Menú principal: **Hoy · Actividades · Tienda · Recompensas · Ajustes**.
+
+Las imágenes son **bocetos**: muestran la idea, no el juego terminado. Los
+números y las tareas de la universidad son de ejemplo. Están en la carpeta
+[`mockups/`](mockups/); en `mockups/fuente/` está el HTML con el que se dibujaron
+(no es el código del juego).
+
+### 12.1 Hoy (pantalla principal)
+
+![Pantalla Hoy](mockups/01-hoy.png)
+
+- A la izquierda, el caballero con su rango, la **vida**, el **XP**, el oro, la racha, las 4 estadísticas y el inventario.
+- A la derecha, el día: cuánto falta para las 3:00 a.m., los **mínimos** (con aviso de cuánta vida pierdo si no los cumplo) y los otros hábitos.
+- Cada actividad es un enemigo: el botón **Atacar** la marca como cumplida y la fila queda como **Derrotado**.
+- Abajo, las **misiones** con su fecha de entrega y el **jefe final** con su barra de vida.
+
+### 12.2 Actividades (lista)
+
+![Apartado de actividades](mockups/02-actividades.png)
+
+Se ven los sagrados con candado (y el globo que explica por qué no se pueden
+quitar), los hábitos con **Editar/Quitar**, la confirmación al quitar uno, y la
+sección **Quitadas** con **Volver a poner** y **Borrar**. *"Tocar guitarra"* es
+solo un ejemplo de actividad quitada.
+
+### 12.3 Nueva actividad: hábito
+
+![Crear un hábito](mockups/03-nuevo-habito.png)
+
+### 12.4 Nueva actividad: misión
+
+![Crear una misión](mockups/04-nueva-mision.png)
+
+### 12.5 Nueva actividad: jefe final
+
+![Crear un jefe final](mockups/05-nuevo-jefe.png)
+
+### 12.6 Tienda
+
+![Tienda](mockups/06-tienda.png)
+
+- Cada producto muestra su precio en XP **y** oro, y **qué pasará** si lo compro. Por ejemplo: "esta compra te bajaría al nivel 6".
+- Si no me alcanza, el botón dice cuánto me falta.
+
+### 12.7 Recompensas
+
+![Recompensas](mockups/07-recompensas.png)
+
+- **Camino al trono:** los 9 rangos. Los que aún no alcanzo se ven como siluetas.
+- **Próximas recompensas** por nivel, con el botón **Reclamar** cuando ya me toca.
+- Mis dos listas (grandes y pequeñas), editables y en orden.
+
+### 12.8 Ajustes (sin boceto todavía)
+
+🟡 Modo de muerte (Hardcore / Duro / Suave), exportar e importar la copia de
+seguridad, e historial de muertes.
+
+---
+
+## 13. Preguntas abiertas
+
+1. **Rendirse:** ¿te parece bien que quitar una misión o un jefe cuente como vencido (con su daño), salvo el mismo día en que lo creaste?
+2. **Cambios desde mañana:** ¿aceptas que los cambios de dificultad, frecuencia o mínimo se apliquen desde el siguiente reinicio de las 3:00 a.m.?
+3. **Días concretos:** ¿te sirve la opción de elegir días de la semana (por ejemplo, solo lunes, miércoles y viernes)? Si ese hábito es mínimo, solo quitaría vida esos días.
+4. **Sagrados:** ¿tampoco se deben poder renombrar? (Propuesta: no.)
+5. **Nombre del juego:** en los bocetos puse "RPGamificación", como el repositorio. ¿Quieres otro nombre?
+6. **Bocetos:** ¿algo que cambiar del aspecto (colores, distribución, textos) antes de empezar a programar?

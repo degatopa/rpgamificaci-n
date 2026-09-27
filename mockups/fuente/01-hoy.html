@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Boceto · Hoy</title>
+<link rel="stylesheet" href="estilos.css">
+<script src="pixel.js"></script>
+<script src="interfaz.js"></script>
+<style>
+  .hoy { display: grid; grid-template-columns: 410px 1fr; gap: 26px; align-items: start; }
+  .col { display: flex; flex-direction: column; gap: 26px; }
+  .rango { font-size: 24px; color: var(--oro); }
+  .escenario {
+    height: 210px; margin: 14px 0 16px; position: relative; display: flex; align-items: flex-end; justify-content: center;
+    background: linear-gradient(#2c3066 0 60%, #22254f 60% 100%);
+    box-shadow: 0 -3px 0 0 var(--linea), 0 3px 0 0 var(--linea), -3px 0 0 0 var(--linea), 3px 0 0 0 var(--linea);
+    overflow: hidden;
+  }
+  .escenario::before { /* suelo de piedra */
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 38px;
+    background: repeating-linear-gradient(90deg, #3b3552 0 46px, #2a253d 46px 50px);
+    box-shadow: inset 0 4px 0 0 #4b4468;
+  }
+  .escenario .px { position: relative; margin-bottom: 20px; }
+  .estrellas { position: absolute; inset: 0; background:
+    radial-gradient(#fff 1px, transparent 1.5px) 20px 18px / 90px 60px,
+    radial-gradient(#9fb0ff 1px, transparent 1.5px) 60px 40px / 130px 70px; opacity: .6; }
+  .linea { display: flex; align-items: center; gap: 8px; font-size: 24px; margin-top: 12px; }
+  .linea b { margin-left: auto; font-weight: 700; }
+  .fila2 { display: flex; gap: 12px; margin-top: 16px; }
+  .fila2 .chip { font-size: 22px; padding: 3px 10px; }
+  .stats { display: grid; grid-template-columns: 26px 1fr auto auto; gap: 2px 12px; align-items: center; font-size: 24px; }
+  .stats .nv { font-family: "Titulo"; font-weight: 700; font-size: 14px; color: var(--texto); }
+  .stats .num { text-align: right; color: var(--suave); font-size: 21px; min-width: 84px; }
+  .stats .barra { grid-column: 1 / -1; margin-bottom: 12px; }
+  .inv { display: flex; flex-direction: column; gap: 12px; }
+  .inv .it { display: flex; align-items: center; gap: 12px; font-size: 24px; }
+  .inv .it .btn { margin-left: auto; }
+  .dia { display: flex; align-items: center; gap: 22px; }
+  .dia .fecha { font-family: "Titulo"; font-weight: 700; font-size: 20px; color: var(--oro); }
+  .dia .reloj { margin-left: auto; text-align: right; font-size: 22px; }
+  .dia .reloj b { font-family: "Titulo"; font-weight: 700; font-size: 16px; color: var(--aviso); }
+  .jefe { display: grid; grid-template-columns: 110px 1fr; gap: 18px; align-items: center; }
+  .jefe .retrato { width: 110px; height: 104px; display: grid; place-items: center; background: #14163a;
+    box-shadow: 0 -3px 0 0 var(--linea), 0 3px 0 0 var(--linea), -3px 0 0 0 var(--linea), 3px 0 0 0 var(--linea); }
+  .inferior { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin-top: 26px; }
+</style>
+</head>
+<body data-pagina="hoy">
+<main class="envoltura">
+  <div class="hoy">
+    <!-- Columna izquierda: el personaje -->
+    <div class="col">
+      <section class="caja dorada">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div>
+            <div class="pixel rango">ESCUDERO</div>
+            <div class="suave" style="font-size:22px;margin-top:4px">Nivel 7 · Próximo rango: <b style="color:var(--texto)">Caballero</b> en nivel 10</div>
+          </div>
+        </div>
+        <div class="escenario"><div class="estrellas"></div><span data-px="k:escudero" data-s="8"></span></div>
+        <div class="linea"><span data-px="corazon" data-s="2"></span>VIDA <b>70 / 100</b></div>
+        <div class="barra vida" style="--p:70%"><i></i></div>
+        <div class="linea"><span data-px="xp" data-s="2"></span>XP hacia el nivel 8 <b>150 / 410</b></div>
+        <div class="barra xp" style="--p:36.6%"><i></i></div>
+        <div class="fila2">
+          <span class="chip"><span data-px="moneda" data-s="2"></span><b class="oro">640</b> oro</span>
+          <span class="chip"><span data-px="llama" data-s="2"></span>Racha <b style="color:var(--texto)">12 días</b> · +10 % XP</span>
+        </div>
+      </section>
+
+      <section class="caja">
+        <h2 class="titulo">ESTADÍSTICAS</h2>
+        <div class="stats">
+          <span data-px="cuerpo" data-s="2"></span><span class="c-cuerpo">Cuerpo</span><span class="nv">NV 9</span><span class="num">40/140 XP</span>
+          <div class="barra fina" style="--p:29%;--c1:var(--cuerpo);--c2:var(--cuerpo-2)"><i></i></div>
+          <span data-px="espiritu" data-s="2"></span><span class="c-espiritu">Espíritu</span><span class="nv">NV 8</span><span class="num">45/130 XP</span>
+          <div class="barra fina" style="--p:35%;--c1:var(--espiritu);--c2:var(--espiritu-2)"><i></i></div>
+          <span data-px="mente" data-s="2"></span><span class="c-mente">Mente</span><span class="nv">NV 5</span><span class="num">20/100 XP</span>
+          <div class="barra fina" style="--p:20%;--c1:var(--mente);--c2:var(--mente-2)"><i></i></div>
+          <span data-px="creatividad" data-s="2"></span><span class="c-creatividad">Creatividad</span><span class="nv">NV 5</span><span class="num">80/100 XP</span>
+          <div class="barra fina" style="--p:80%;--c1:var(--creatividad);--c2:var(--creatividad-2)"><i></i></div>
+        </div>
+      </section>
+
+      <section class="caja">
+        <h2 class="titulo">INVENTARIO</h2>
+        <div class="inv">
+          <div class="it"><span data-px="descanso" data-s="2"></span>Poción de descanso <b>×1</b><span class="btn chico">USAR HOY</span></div>
+          <div class="it tenue"><span data-px="pocion" data-s="2"></span>Poción de vida ×0<span class="btn chico apagado">IR A LA TIENDA</span></div>
+          <div class="it tenue"><span data-px="elixir" data-s="2"></span>Sin efectos activos</div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Columna derecha: el día -->
+    <div class="col">
+      <section class="caja dia">
+        <span data-px="calendario" data-s="3"></span>
+        <div>
+          <div class="fecha">DOMINGO 27 DE SEPTIEMBRE</div>
+          <div class="suave" style="margin-top:6px">Hoy llevas <b class="oro">+66 XP</b> y <b class="oro">+30 oro</b> · 4 enemigos derrotados</div>
+        </div>
+        <div class="reloj">El día se cierra en<br><b>5 H 13 MIN</b> <span class="suave">(3:00 a.m.)</span></div>
+      </section>
+
+      <section class="caja">
+        <h2 class="titulo"><span data-px="candado" data-s="2"></span>MÍNIMOS DEL DÍA · 2/4 <span class="der">Sagrados: no se pueden quitar</span></h2>
+        <div class="nota peligro" style="margin-bottom:14px"><b>Si no cumples los 2 que faltan antes de las 3:00 a.m.:</b> −20 HP y pierdes la racha de 12 días.</div>
+        <div class="lista">
+          <div class="enemigo hecho">
+            <div class="retrato"><span data-px="elite" data-s="3"></span></div>
+            <div><div class="nombre">Leer la Biblia 10 min</div>
+              <div class="meta"><span class="chip espiritu"><span data-px="espiritu" data-s="1"></span>Espíritu</span><span class="chip">Élite</span><span class="chip sagrado">Sagrado</span></div></div>
+            <div class="premio">+20 XP<br>+10 oro</div>
+            <div class="accion"><span class="sello"><span data-px="espada" data-s="1"></span>DERROTADO</span></div>
+          </div>
+          <div class="enemigo">
+            <div class="retrato"><span data-px="elite" data-s="3"></span></div>
+            <div><div class="nombre">Orar 30 min</div>
+              <div class="meta"><span class="chip espiritu"><span data-px="espiritu" data-s="1"></span>Espíritu</span><span class="chip">Élite</span><span class="chip sagrado">Sagrado</span><span class="chip minimo">−10 HP si no</span></div></div>
+            <div class="premio oro">+20 XP<br>+10 oro</div>
+            <div class="accion"><span class="btn dorado"><span data-px="espada" data-s="1"></span>ATACAR</span></div>
+          </div>
+          <div class="enemigo hecho">
+            <div class="retrato"><span data-px="elite" data-s="3"></span></div>
+            <div><div class="nombre">Ejercicios para enderezar la espalda</div>
+              <div class="meta"><span class="chip cuerpo"><span data-px="cuerpo" data-s="1"></span>Cuerpo</span><span class="chip">Élite</span><span class="chip sagrado">Sagrado</span></div></div>
+            <div class="premio">+20 XP<br>+10 oro</div>
+            <div class="accion"><span class="sello"><span data-px="espada" data-s="1"></span>DERROTADO</span></div>
+          </div>
+          <div class="enemigo">
+            <div class="retrato"><span data-px="elite" data-s="3"></span></div>
+            <div><div class="nombre">Escribir al menos una página</div>
+              <div class="meta"><span class="chip creatividad"><span data-px="creatividad" data-s="1"></span>Creatividad</span><span class="chip">Élite</span><span class="chip sagrado">Sagrado</span><span class="chip minimo">−10 HP si no</span></div></div>
+            <div class="premio oro">+20 XP<br>+10 oro</div>
+            <div class="accion"><span class="btn dorado"><span data-px="espada" data-s="1"></span>ATACAR</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="caja">
+        <h2 class="titulo">OTROS HÁBITOS · 2/6 <span class="der">No quitan vida</span></h2>
+        <div class="lista">
+          <div class="enemigo">
+            <div class="retrato"><span data-px="comun" data-s="3"></span></div>
+            <div><div class="nombre">Crema del acné en la noche</div>
+              <div class="meta"><span class="chip cuerpo"><span data-px="cuerpo" data-s="1"></span>Cuerpo</span><span class="chip">Común</span></div></div>
+            <div class="premio oro">+10 XP<br>+5 oro</div>
+            <div class="accion"><span class="btn"><span data-px="espada" data-s="1"></span>ATACAR</span></div>
+          </div>
+          <div class="enemigo hecho">
+            <div class="retrato"><span data-px="comun" data-s="3"></span></div>
+            <div><div class="nombre">Actividad física 20 min</div>
+              <div class="meta"><span class="chip cuerpo"><span data-px="cuerpo" data-s="1"></span>Cuerpo</span><span class="chip">Común</span></div></div>
+            <div class="premio">+10 XP<br>+5 oro</div>
+            <div class="accion"><span class="sello"><span data-px="espada" data-s="1"></span>DERROTADO</span></div>
+          </div>
+          <div class="enemigo hecho">
+            <div class="retrato"><span data-px="comun" data-s="3"></span></div>
+            <div><div class="nombre">Levantarme a la misma hora</div>
+              <div class="meta"><span class="chip cuerpo"><span data-px="cuerpo" data-s="1"></span>Cuerpo</span><span class="chip">Común</span></div></div>
+            <div class="premio">+10 XP<br>+5 oro</div>
+            <div class="accion"><span class="sello"><span data-px="espada" data-s="1"></span>DERROTADO</span></div>
+          </div>
+          <div class="enemigo">
+            <div class="retrato"><span data-px="comun" data-s="3"></span></div>
+            <div><div class="nombre">Comer a horas decentes</div>
+              <div class="meta"><span class="chip cuerpo"><span data-px="cuerpo" data-s="1"></span>Cuerpo</span><span class="chip">Común</span></div></div>
+            <div class="premio oro">+10 XP<br>+5 oro</div>
+            <div class="accion"><span class="btn"><span data-px="espada" data-s="1"></span>ATACAR</span></div>
+          </div>
+          <div class="enemigo">
+            <div class="retrato"><span data-px="comun" data-s="3"></span></div>
+            <div><div class="nombre">Aprender algo nuevo 30 min</div>
+              <div class="meta"><span class="chip creatividad"><span data-px="creatividad" data-s="1"></span>Creatividad</span><span class="chip">Común</span></div></div>
+            <div class="premio oro">+10 XP<br>+5 oro</div>
+            <div class="accion"><span class="btn"><span data-px="espada" data-s="1"></span>ATACAR</span></div>
+          </div>
+          <div class="enemigo">
+            <div class="retrato"><span data-px="comun" data-s="3"></span></div>
+            <div><div class="nombre">Ir a la iglesia</div>
+              <div class="meta"><span class="chip espiritu"><span data-px="espiritu" data-s="1"></span>Espíritu</span><span class="chip">Común</span><span class="chip">3 por semana: 2/3</span><span class="chip" style="color:var(--aviso)">Acaba hoy</span></div></div>
+            <div class="premio oro">+10 XP<br>+5 oro</div>
+            <div class="accion"><span class="btn"><span data-px="espada" data-s="1"></span>ATACAR</span></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="inferior">
+    <section class="caja">
+      <h2 class="titulo"><span data-px="calendario" data-s="2"></span>MISIONES <span class="der">Tareas con fecha de entrega</span></h2>
+      <div class="lista">
+        <div class="enemigo" style="grid-template-columns:46px 1fr auto 150px">
+          <div class="retrato"><span data-px="comun" data-s="3"></span></div>
+          <div><div class="nombre">Leer el capítulo 3 para clase</div>
+            <div class="meta"><span class="chip mente"><span data-px="mente" data-s="1"></span>Mente</span><span class="chip">Pequeña</span><span class="chip minimo">Vence mañana · −5 HP</span></div></div>
+          <div class="premio oro">+10 XP<br>+5 oro</div>
+          <div class="accion"><span class="btn dorado"><span data-px="espada" data-s="1"></span>COMPLETAR</span></div>
+        </div>
+        <div class="enemigo" style="grid-template-columns:46px 1fr auto 150px">
+          <div class="retrato"><span data-px="elite" data-s="3"></span></div>
+          <div><div class="nombre">Ensayo de 5 páginas</div>
+            <div class="meta"><span class="chip mente"><span data-px="mente" data-s="1"></span>Mente</span><span class="chip">Mediana</span><span class="chip">Vence el martes 29 · −10 HP</span></div></div>
+          <div class="premio oro">+20 XP<br>+10 oro</div>
+          <div class="accion"><span class="btn"><span data-px="espada" data-s="1"></span>COMPLETAR</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="caja">
+      <h2 class="titulo"><span data-px="corona" data-s="2"></span>JEFE FINAL <span class="der">1 activo</span></h2>
+      <div class="jefe">
+        <div class="retrato"><span data-px="jefe" data-s="6"></span></div>
+        <div>
+          <div style="display:flex;align-items:baseline;gap:12px"><span class="pixel" style="font-size:20px">LA TESIS</span><span class="chip mente"><span data-px="mente" data-s="1"></span>Mente</span><span class="chip" style="color:var(--espiritu)">Épico</span></div>
+          <div class="linea" style="margin-top:10px">Vida del jefe <b>4 / 6 subtareas</b></div>
+          <div class="barra jefe" style="--p:66.6%"><i></i></div>
+          <div class="suave" style="font-size:22px;margin-top:10px">Próxima subtarea: <b style="color:var(--texto)">Metodología</b> · Fecha límite: 15 jun 2027 (−50 HP si vence)</div>
+          <div style="font-size:22px;margin-top:4px">Premio: <b class="oro">+1000 XP · +250 oro</b> + tu recompensa especial</div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+</body>
+</html>

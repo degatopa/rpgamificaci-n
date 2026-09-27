@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Boceto · Nuevo jefe final</title>
+<link rel="stylesheet" href="estilos.css">
+<script src="pixel.js"></script>
+<script src="interfaz.js"></script>
+<style>
+  .carta-jefe { text-align: center; }
+  .carta-jefe .foso { height: 170px; display: grid; place-items: center; margin: 4px 0 14px;
+    background: radial-gradient(circle at 50% 60%, #3b1f5e 0 45%, #1b1e3b 70%);
+    box-shadow: 0 -3px 0 0 var(--linea), 0 3px 0 0 var(--linea), -3px 0 0 0 var(--linea), 3px 0 0 0 var(--linea); }
+  .carta-jefe .nombre-jefe { font-family: "Titulo"; font-weight: 700; font-size: 20px; color: var(--texto); }
+</style>
+</head>
+<body data-pagina="actividades">
+<main class="envoltura">
+  <div class="migas">Actividades › <b>Nueva actividad</b></div>
+  <h1 class="pagina" style="margin-bottom:18px">NUEVA ACTIVIDAD</h1>
+
+  <div class="form-rejilla">
+    <section class="caja">
+      <div class="paso">
+        <div class="etiqueta">1 · ¿QUÉ TIPO DE ACTIVIDAD ES?</div>
+        <div class="pestanas">
+          <div><span data-px="espada" data-s="1"></span>HÁBITO</div>
+          <div><span data-px="calendario" data-s="1"></span>MISIÓN</div>
+          <div class="activa"><span data-px="corona" data-s="1"></span>JEFE FINAL</div>
+        </div>
+        <div class="ayuda"><b>Jefe final:</b> un reto grande con su propia barra de vida. Se derrota por partes.</div>
+      </div>
+
+      <div class="paso">
+        <div class="etiqueta">2 · NOMBRE</div>
+        <div class="campo">Terminar la tesis<span class="contador">17/40</span></div>
+      </div>
+
+      <div class="paso" style="display:grid;grid-template-columns:1fr 1.35fr;gap:18px">
+        <div>
+          <div class="etiqueta">3 · ESTADÍSTICA</div>
+          <div class="opciones dos" style="gap:8px">
+            <div class="opcion" style="padding:8px 10px"><div class="cab"><span data-px="cuerpo" data-s="2"></span><span class="c-cuerpo">Cuerpo</span></div></div>
+            <div class="opcion" style="padding:8px 10px"><div class="cab"><span data-px="espiritu" data-s="2"></span><span class="c-espiritu">Espíritu</span></div></div>
+            <div class="opcion elegida" style="padding:8px 10px"><div class="cab"><span data-px="mente" data-s="2"></span><span class="c-mente">Mente</span></div></div>
+            <div class="opcion" style="padding:8px 10px"><div class="cab"><span data-px="creatividad" data-s="2"></span><span class="c-creatividad">Creatividad</span></div></div>
+          </div>
+        </div>
+        <div>
+          <div class="etiqueta">4 · TAMAÑO</div>
+          <div class="opciones tres" style="gap:8px">
+            <div class="opcion" style="padding:8px 10px"><div class="cab">Pequeño</div><div class="det">200 XP<br>50 oro</div></div>
+            <div class="opcion" style="padding:8px 10px"><div class="cab">Grande</div><div class="det">500 XP<br>120 oro</div></div>
+            <div class="opcion elegida" style="padding:8px 10px"><div class="cab" style="color:var(--espiritu)">Épico</div><div class="det">1000 XP<br>250 oro</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="paso">
+        <div class="etiqueta">5 · ¿CÓMO SE LE HACE DAÑO?</div>
+        <div class="pestanas">
+          <div class="activa">POR SUBTAREAS</div><div>POR RACHA DE UN HÁBITO</div>
+        </div>
+        <div class="subtareas" style="margin-top:14px">
+          <div class="campo"><span class="num">1</span>Elegir el tema y el tutor<span class="x">✕</span></div>
+          <div class="campo"><span class="num">2</span>Marco teórico<span class="x">✕</span></div>
+          <div class="campo"><span class="num">3</span>Metodología<span class="x">✕</span></div>
+          <div class="campo"><span class="num">4</span>Trabajo de campo<span class="x">✕</span></div>
+          <div class="campo"><span class="num">5</span>Resultados<span class="x">✕</span></div>
+          <div class="campo"><span class="num">6</span>Conclusiones y revisión final<span class="x">✕</span></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;margin-top:10px">
+          <span class="btn chico">+ AÑADIR SUBTAREA</span>
+          <span class="ayuda" style="margin:0">Cada subtarea: +10 XP · +5 oro y le quita 1/6 de vida. Puedes añadir más después.</span>
+        </div>
+      </div>
+
+      <div class="paso">
+        <div class="etiqueta">6 · FECHA LÍMITE <span class="opc">(opcional)</span></div>
+        <div style="display:flex;gap:14px;align-items:center">
+          <span class="interruptor on"></span>
+          <div class="campo" style="flex:1"><span data-px="calendario" data-s="2"></span>15 de junio de 2027</div>
+        </div>
+        <div class="nota peligro" style="margin-top:12px">Si llega la fecha y no lo has derrotado: <b style="color:#fff">−50 HP</b> (la mitad de tu vida). La poción de descanso <b style="color:#fff">no</b> protege de esto.</div>
+      </div>
+
+      <div class="paso">
+        <div class="etiqueta">7 · RECOMPENSA ESPECIAL <span class="opc">(de la vida real, la eliges tú)</span></div>
+        <div class="campo"><span data-px="cofre" data-s="2"></span><span class="ph">Ej.: una cena especial para celebrar</span></div>
+      </div>
+
+      <div class="fila-botones">
+        <span class="btn grande">CANCELAR</span>
+        <span class="btn grande dorado"><span data-px="corona" data-s="1"></span>CREAR JEFE</span>
+      </div>
+    </section>
+
+    <div style="display:flex;flex-direction:column;gap:26px">
+      <section class="caja dorada carta-jefe">
+        <h2 class="titulo">VISTA PREVIA</h2>
+        <div class="foso"><span data-px="jefe" data-s="8"></span></div>
+        <div class="nombre-jefe">TERMINAR LA TESIS</div>
+        <div style="display:flex;justify-content:center;gap:6px;margin:8px 0 12px">
+          <span class="chip mente"><span data-px="mente" data-s="1"></span>Mente</span><span class="chip" style="color:var(--espiritu)">Jefe épico</span>
+        </div>
+        <div class="linea" style="display:flex;font-size:21px"><span>Vida del jefe</span><b style="margin-left:auto">6 / 6</b></div>
+        <div class="barra jefe" style="--p:100%"><i></i></div>
+      </section>
+
+      <section class="caja">
+        <h2 class="titulo">RESUMEN</h2>
+        <div class="resumen-lista">
+          <div><span data-px="xp" data-s="2"></span><span>Al derrotarlo: <b class="oro">+1000 XP</b> y <b class="oro">+250 oro</b></span></div>
+          <div><span data-px="espada" data-s="2"></span><span>6 subtareas: <b class="oro">+10 XP</b> y <b class="oro">+5 oro</b> cada una</span></div>
+          <div><span data-px="cofre" data-s="2"></span><span>Más tu <b>recompensa especial</b></span></div>
+          <div><span data-px="calendario" data-s="2"></span><span>Límite: <b>15 jun 2027</b> · si vence, <b style="color:#ff8a8d">−50 HP</b></span></div>
+        </div>
+      </section>
+
+      <div class="nota">
+        <b>Por racha de un hábito:</b> el jefe se liga a un hábito (por ejemplo, iglesia 3 por semana) y recibe daño cada semana que cumples la meta. Si rompes la racha, se cura por completo.
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

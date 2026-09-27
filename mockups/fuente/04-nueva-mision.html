@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Boceto · Nueva misión</title>
+<link rel="stylesheet" href="estilos.css">
+<script src="pixel.js"></script>
+<script src="interfaz.js"></script>
+</head>
+<body data-pagina="actividades">
+<main class="envoltura">
+  <div class="migas">Actividades › <b>Nueva actividad</b></div>
+  <h1 class="pagina" style="margin-bottom:18px">NUEVA ACTIVIDAD</h1>
+
+  <div class="form-rejilla">
+    <section class="caja">
+      <div class="paso">
+        <div class="etiqueta">1 · ¿QUÉ TIPO DE ACTIVIDAD ES?</div>
+        <div class="pestanas">
+          <div><span data-px="espada" data-s="1"></span>HÁBITO</div>
+          <div class="activa"><span data-px="calendario" data-s="1"></span>MISIÓN</div>
+          <div><span data-px="corona" data-s="1"></span>JEFE FINAL</div>
+        </div>
+        <div class="ayuda"><b>Misión:</b> algo que haces una sola vez y tiene fecha de entrega. Por ejemplo, las tareas de la universidad.</div>
+      </div>
+
+      <div class="paso">
+        <div class="etiqueta">2 · NOMBRE</div>
+        <div class="campo">Ensayo de 5 páginas<span class="contador">19/40</span></div>
+      </div>
+
+      <div class="paso">
+        <div class="etiqueta">3 · ¿QUÉ ESTADÍSTICA ENTRENA?</div>
+        <div class="opciones cuatro">
+          <div class="opcion stat"><div class="cab"><span data-px="cuerpo" data-s="3"></span><span class="c-cuerpo">Cuerpo</span></div><div class="det">Salud física</div></div>
+          <div class="opcion stat"><div class="cab"><span data-px="espiritu" data-s="3"></span><span class="c-espiritu">Espíritu</span></div><div class="det">Fe y calma</div></div>
+          <div class="opcion stat elegida"><div class="cab"><span data-px="mente" data-s="3"></span><span class="c-mente">Mente</span></div><div class="det">Estudio</div></div>
+          <div class="opcion stat"><div class="cab"><span data-px="creatividad" data-s="3"></span><span class="c-creatividad">Creatividad</span></div><div class="det">Crear cosas</div></div>
+        </div>
+      </div>
+
+      <div class="paso">
+        <div class="etiqueta">4 · TAMAÑO <span class="opc">(cuánto da y cuánto quita si vence)</span></div>
+        <div class="opciones tres">
+          <div class="opcion"><div class="cab"><span data-px="comun" data-s="3"></span>Pequeña · Común</div><div class="det">+10 XP · +5 oro<br>Si vence: −5 HP</div></div>
+          <div class="opcion elegida"><div class="cab"><span data-px="elite" data-s="3"></span>Mediana · Élite</div><div class="det">+20 XP · +10 oro<br>Si vence: −10 HP</div></div>
+          <div class="opcion"><div class="cab"><span data-px="minijefe" data-s="3"></span>Grande · Mini jefe</div><div class="det">+50 XP · +20 oro<br>Si vence: −25 HP</div></div>
+        </div>
+        <div class="ayuda">¿Es enorme, con muchas partes? Mejor créala como <b>Jefe final</b>.</div>
+      </div>
+
+      <div class="paso">
+        <div class="etiqueta">5 · FECHA DE ENTREGA</div>
+        <div class="campo"><span data-px="calendario" data-s="2"></span>Martes 29 de septiembre de 2026</div>
+        <div class="ayuda">Vence cuando termina ese día: a las 3:00 a.m. del miércoles. No se puede elegir una fecha pasada.</div>
+      </div>
+
+      <div class="paso">
+        <div class="etiqueta">6 · NOTA <span class="opc">(opcional)</span></div>
+        <div class="campo" style="min-height:70px;align-items:flex-start"><span class="ph">Ej.: formato APA, entregar por el aula virtual</span></div>
+      </div>
+
+      <div class="fila-botones">
+        <span class="btn grande">CANCELAR</span>
+        <span class="btn grande dorado"><span data-px="calendario" data-s="1"></span>CREAR MISIÓN</span>
+      </div>
+    </section>
+
+    <div style="display:flex;flex-direction:column;gap:26px">
+      <section class="caja dorada">
+        <h2 class="titulo">VISTA PREVIA</h2>
+        <div class="suave" style="margin-bottom:12px">Así aparecerá en tu pantalla <b>Hoy</b>:</div>
+        <div class="enemigo compacto">
+          <div class="retrato"><span data-px="elite" data-s="3"></span></div>
+          <div><div class="nombre">Ensayo de 5 páginas</div>
+            <div class="meta"><span class="chip mente"><span data-px="mente" data-s="1"></span>Mente</span><span class="chip">Mediana</span><span class="chip">Vence en 2 días</span></div></div>
+          <div class="premio oro">+20 XP<br>+10 oro</div>
+        </div>
+      </section>
+
+      <section class="caja">
+        <h2 class="titulo">RESUMEN</h2>
+        <div class="resumen-lista">
+          <div><span data-px="xp" data-s="2"></span><span>Al completarla: <b class="oro">+20 XP</b> para Mente y <b class="oro">+10 de oro</b></span></div>
+          <div><span data-px="calendario" data-s="2"></span><span>Tienes hasta el <b>martes 29</b> (quedan 2 días)</span></div>
+          <div><span data-px="corazon" data-s="2"></span><span>Si vence sin hacerla: <b style="color:#ff8a8d">−10 HP</b></span></div>
+          <div><span data-px="calavera" data-s="2"></span><span>Y queda <b>fallida</b>: ya no dará XP ni oro</span></div>
+          <div><span data-px="descanso" data-s="2"></span><span>La poción de descanso <b>sí</b> te protege de esta misión (es mediana)</span></div>
+        </div>
+      </section>
+
+      <div class="nota oro">¿Te equivocaste al crearla? Hoy la puedes borrar sin castigo. A partir de mañana, quitarla cuenta como <b>rendirse</b>: pierdes la vida igual que si hubiera vencido.</div>
+    </div>
+  </div>
+</main>
+</body>
+</html>
