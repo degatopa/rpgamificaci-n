@@ -1,6 +1,7 @@
 # Documento de diseño — RPG de hábitos
 
-> **Estado:** borrador v0.3. Casi todo está decidido; quedan 3 preguntas al final.
+> **Estado:** v0.4 — **diseño cerrado**. Todas las reglas están decididas; lo marcado
+> con 🟡 son propuestas mías que aceptaste o que se pueden ajustar al probar el juego.
 >
 > **Leyenda:**
 > ✅ = decidido · 🟡 = propuesta (se puede cambiar) · ❓ = falta decidir
@@ -38,7 +39,7 @@ regeneración gratis: cada error se paga con el esfuerzo (XP y oro) que ya hice.
 | 1–4     | Soldado raso  | inicio                         |
 | 5–9     | Escudero      | ~1,5 semanas                   |
 | 10–14   | Caballero     | ~3 semanas                     |
-| 15–19   | Capitán       | ~6 semanas                     |
+| 15–19   | Capitán       | ~5,5 semanas                   |
 | 20–29   | Comandante    | ~2 meses                       |
 | 30–39   | Señor feudal  | ~3,5 meses                     |
 | 40–49   | Duque         | ~6 meses                       |
@@ -91,7 +92,8 @@ hábitos: nombre, estadística, dificultad, frecuencia y si es mínimo o no.
 
 ### 3.2 Hábitos sagrados (no se pueden quitar)
 
-✅ Hay **4 hábitos fijos** que **no se pueden borrar** por más que quiera:
+✅ Hay **4 hábitos fijos** que **no se pueden borrar** por más que quiera. Además,
+**son mis mínimos diarios**: si no los cumplo, cada uno me quita 10 HP.
 
 | Hábito sagrado                     | Estadística  | Frecuencia | Dificultad |
 |------------------------------------|--------------|------------|------------|
@@ -100,9 +102,8 @@ hábitos: nombre, estadística, dificultad, frecuencia y si es mínimo o no.
 | Ejercicios para enderezar la espalda | Cuerpo     | Diaria     | Media      |
 | Escribir al menos una página       | Creatividad  | Diaria     | Media      |
 
-🟡 En la configuración aparecen con un 🔒 candado. **No se pueden** borrar,
-pausar, cambiar de dificultad ni cambiar de frecuencia. Tampoco se les puede
-quitar la marca de mínimo, si la tienen (ver pregunta 1).
+✅ En la configuración aparecen con un 🔒 candado. **No se pueden** borrar,
+pausar, cambiar de dificultad, cambiar de frecuencia ni dejar de ser mínimos.
 
 *Nota:* como los datos están en mi propio navegador, técnicamente siempre podría
 hacer trampa tocando el código. El candado es un **compromiso de honor**: el juego
@@ -122,23 +123,23 @@ no ofrece ninguna forma de quitarlos.
 
 ### 3.4 Hábitos iniciales
 
-✅ Lista inicial (las dificultades que no diste son 🟡 propuestas mías):
+✅ Lista inicial. **Todos los hábitos son de dificultad media.**
 
 | Hábito                               | Estadística  | Frecuencia         | Dificultad     | Mínimo | Sagrado |
 |--------------------------------------|--------------|--------------------|----------------|--------|---------|
-| Leer la Biblia 10 min                | Espíritu     | Diaria             | Media ✅       | ✅ Sí  | 🔒      |
-| Orar 30 min                          | Espíritu     | Diaria             | Media ✅       | ❓     | 🔒      |
-| Ejercicios para enderezar la espalda | Cuerpo       | Diaria             | Media ✅       | ✅ Sí  | 🔒      |
-| Escribir al menos una página         | Creatividad  | Diaria             | Media ✅       | ❓     | 🔒      |
-| Crema del acné en la noche           | Cuerpo       | Diaria             | Fácil 🟡       | ✅ Sí  |         |
-| Actividad física 20 min              | Cuerpo       | Diaria             | Media 🟡       | ✅ Sí  |         |
-| Levantarme a la misma hora           | Cuerpo       | Diaria             | Media 🟡       | No     |         |
-| Comer a horas decentes               | Cuerpo       | Diaria             | Fácil 🟡       | No     |         |
-| Ir a la iglesia                      | Espíritu     | 3 × semana         | Media 🟡       | No     |         |
-| Aprender algo nuevo 30 min           | Creatividad  | Diaria             | Media 🟡       | No     |         |
+| Leer la Biblia 10 min                | Espíritu     | Diaria             | Media          | ✅ Sí  | 🔒      |
+| Orar 30 min                          | Espíritu     | Diaria             | Media          | ✅ Sí  | 🔒      |
+| Ejercicios para enderezar la espalda | Cuerpo       | Diaria             | Media          | ✅ Sí  | 🔒      |
+| Escribir al menos una página         | Creatividad  | Diaria             | Media          | ✅ Sí  | 🔒      |
+| Crema del acné en la noche           | Cuerpo       | Diaria             | Media          | No     |         |
+| Actividad física 20 min              | Cuerpo       | Diaria             | Media          | No     |         |
+| Levantarme a la misma hora           | Cuerpo       | Diaria             | Media          | No     |         |
+| Comer a horas decentes               | Cuerpo       | Diaria             | Media          | No     |         |
+| Ir a la iglesia                      | Espíritu     | 3 × semana         | Media          | No     |         |
+| Aprender algo nuevo 30 min           | Creatividad  | Diaria             | Media          | No     |         |
 | Tareas de la universidad             | Mente        | Misiones (ver 3.6) | Según la tarea | —      |         |
 
-✅ Los **mínimos diarios** son configurables (salvo lo que diga la pregunta 1 sobre los sagrados).
+✅ Los **mínimos diarios** son configurables: puedo añadir más mínimos, pero los 4 sagrados siempre lo son.
 
 ### 3.5 Jefes finales
 
@@ -163,7 +164,7 @@ no ofrece ninguna forma de quitarlos.
 
 ✅ La **recompensa especial** de cada jefe la escribo yo al crearlo.
 
-🟡 Un jefe puede tener **fecha límite** (opcional). Si vence sin derrotarlo, ver 5.1.
+✅ Un jefe puede tener **fecha límite** (opcional). Si vence sin derrotarlo, pierdo **la mitad de la vida** (ver 5.1).
 
 ### 3.6 Misiones de la universidad (Mente)
 
@@ -173,8 +174,11 @@ Si es muy grande, la convierto en jefe final.
 
 ✅ Si la fecha de entrega pasa sin completarla, **pierdo vida según su tamaño** (ver 5.1).
 
-🟡 Después de vencer, la misión queda marcada como **"fallida"**. Todavía puedo
-completarla, pero solo recibo la **mitad** de XP y oro.
+✅ Después de vencer, la misión queda marcada como **"fallida"** y se cierra:
+**ya no da XP ni oro**. Si no lo hice a tiempo, no lo hice.
+
+🟡 Lo mismo pasa con un jefe con fecha límite vencida: queda "fallido" y no da su
+recompensa. Las subtareas que ya hice conservan el XP que dieron en su momento.
 
 ---
 
@@ -182,23 +186,24 @@ completarla, pero solo recibo la **mitad** de XP y oro.
 
 ✅ Todo el XP ganado (de cualquier estadística) suma al nivel general.
 
-🟡 Fórmula: pasar del nivel `N` al `N+1` cuesta **`250 + 40 × N` XP**.
+🟡 Fórmula: pasar del nivel `N` al `N+1` cuesta **`250 + 45 × N` XP**.
 Está ajustada para que llegar a Emperador (nivel 60) tome más o menos un año.
 
 | Nivel | XP para el siguiente | XP total acumulado para llegar |
 |-------|----------------------|--------------------------------|
-| 1     | 290                  | 0                              |
-| 5     | 450                  | 1 400                          |
-| 10    | 650                  | 4 050                          |
-| 20    | 1 050                | 12 350                         |
-| 30    | 1 450                | 24 650                         |
-| 40    | 1 850                | 40 950                         |
-| 50    | 2 250                | 61 250                         |
-| 60    | 2 650                | 85 550                         |
+| 1     | 295                  | 0                              |
+| 5     | 475                  | 1 450                          |
+| 10    | 700                  | 4 275                          |
+| 20    | 1 150                | 13 300                         |
+| 30    | 1 600                | 26 825                         |
+| 40    | 2 050                | 44 850                         |
+| 50    | 2 500                | 67 375                         |
+| 60    | 2 950                | 94 400                         |
 
-*Cálculo:* con los hábitos iniciales y los nuevos valores, un día perfecto da unos
-190 XP y unos 95 de oro. Cumpliendo el ~85 % son unos 160 XP y 80 de oro al día. Con
-el bonus máximo de racha (+50 %) se llega a unos 240 XP. Eso da ~12 meses hasta el nivel 60.
+*Cálculo:* con los hábitos iniciales (todos medios), un día perfecto da unos
+210 XP y unos 105 de oro. Cumpliendo el ~85 % son unos 180 XP y 90 de oro al día.
+Con el bonus máximo de racha (+50 %) se llega a unos 265 XP. Eso da ~12 meses
+hasta el nivel 60.
 
 ✅ Si gasto XP en la tienda, **puedo bajar de nivel** (ver 6.1).
 
@@ -227,13 +232,12 @@ pociones. La única protección es la **poción de descanso**, que se compra (ve
 | Misión pequeña vencida                 | Al pasar la fecha de entrega | −5 HP                     |
 | Misión mediana vencida                 | Al pasar la fecha de entrega | −10 HP                    |
 | Misión grande vencida                  | Al pasar la fecha de entrega | −25 HP                    |
-| Jefe final con fecha límite vencida 🟡 | Al pasar la fecha límite    | −50 HP                     |
+| Jefe final con fecha límite vencida    | Al pasar la fecha límite    | −50 HP (la mitad de la vida) |
 
-🟡 Los hábitos que **no** son mínimos no quitan vida (solo dejan de dar XP y oro).
+✅ Los hábitos que **no** son mínimos no quitan vida (solo dejan de dar XP y oro).
 
-**Ejemplo:** con los mínimos actuales (Biblia, espalda y actividad física medios;
-crema fácil), un día sin cumplir ninguno quita **35 HP**. Si orar y escribir también
-fueran mínimos, serían **55 HP**: dos días malos seguidos me dejarían casi muerto.
+**Ejemplo:** mis mínimos son los 4 sagrados, todos medios. Un día sin cumplir
+ninguno quita **40 HP**: con dos días así quedo a 20 HP, y al tercero muero.
 
 ---
 
@@ -245,11 +249,11 @@ para que cada error cueste parte del esfuerzo ya hecho.
 | Objeto                   | Efecto                                              | Precio                  |
 |--------------------------|-----------------------------------------------------|-------------------------|
 | **Poción de vida**       | Llena la vida al **máximo** (100 HP)                | **200 XP + 1 000 oro**  |
-| **Poción de descanso**   | Ese día **no pierdo vida** aunque no haga nada      | **100 XP + 300 oro**    |
-| **Multiplicador de XP**  | Multiplica el XP ganado (ver pregunta 2)            | **200 XP + 1 000 oro**  |
+| **Poción de descanso**   | Ese día no pierdo vida por lo **fácil y mediano** (ver 6.2) | **100 XP + 300 oro** |
+| **Multiplicador de XP**  | **×2 XP durante 7 días**                            | **200 XP + 1 000 oro**  |
 
-Con unos 80 de oro al día, una poción de vida cuesta **~12 días de oro**, una de
-descanso **~4 días** y un multiplicador **~12 días**.
+Con unos 90 de oro al día, una poción de vida cuesta **~11 días de oro**, una de
+descanso **~3,5 días** y un multiplicador **~11 días**.
 
 ### 6.1 Poción de vida y bajar de nivel
 
@@ -262,17 +266,23 @@ descanso **~4 días** y un multiplicador **~12 días**.
 
 ### 6.2 Poción de descanso
 
-✅ Protege un día entero: esa noche, a las 3:00 a.m., **no pierdo vida**.
+✅ Protege un día del daño **fácil y mediano**: mínimos no cumplidos y misiones
+pequeñas o medianas que venzan ese día.
+
+✅ **No protege de lo difícil:** si ese día vence una misión grande (−25 HP) o un
+jefe final (−50 HP), ese daño se aplica igual.
 
 🟡 Reglas:
 - Hay que **tomarla antes** del reinicio de las 3:00 a.m. del día que quiero proteger. No sirve para días que ya pasaron.
-- Protege también de las misiones que venzan ese día.
 - La **racha no se rompe**, pero ese día tampoco suma a la racha (queda "congelada").
 - Se pueden comprar por adelantado y guardar en el inventario.
 
 ### 6.3 Multiplicador de XP
 
-✅ Se vende en la tienda por 200 XP + 1 000 oro. ❓ Falta decidir cuánto multiplica y cuánto dura (pregunta 2).
+✅ Duplica el XP ganado durante **7 días** (desde que lo activo). Cuesta 200 XP + 1 000 oro.
+Con unos 180 XP diarios, da ~1 250 XP extra: una ganancia neta de ~1 050 XP.
+
+🟡 No se pueden acumular dos a la vez: si activo otro, se suman los días, no el multiplicador.
 
 🟡 Se combina multiplicando con el bonus de racha (ejemplo: racha +50 % × multiplicador ×2 = ×3).
 
@@ -352,6 +362,10 @@ daño y las rachas que correspondan.
 
 ## 11. Preguntas abiertas
 
-1. **Sagrados y mínimos:** Biblia y espalda ya eran mínimos. ¿**Orar 30 min** y **escribir una página** también deben ser mínimos (quitar vida si no los hago)? Si la respuesta es sí, un día sin hacer nada quitaría 55 HP en vez de 35.
-2. **Multiplicador de XP:** con 200 XP de precio, un multiplicador ×2 que dure **un solo día** me haría **perder** XP: gano unos +160 extra y pago 200. Propuesta: **×2 durante 7 días** (unos +1 100 XP extra, ganancia neta de ~900). ¿Te parece, u otra combinación?
-3. **Confirmar los 🟡 que quedan:** jefe vencido −50 HP, misión fallida a mitad de XP, la poción de descanso protege también de misiones vencidas, y las dificultades propuestas para los hábitos no sagrados.
+Ninguna. ✅ El diseño está cerrado.
+
+Los números (fórmulas de nivel, precios, daño) se pueden ajustar después de
+jugar unas semanas, si algo resulta demasiado fácil o demasiado difícil.
+
+**Siguiente paso:** planificar cómo construir el juego (pantallas, orden de
+trabajo y primera versión mínima jugable).
