@@ -383,6 +383,18 @@ test('quitar un hábito normal es inmediato; se puede volver a poner y borrar', 
   assert.equal(porNombre(e, 'Comer a horas decentes'), undefined);
 });
 
+test('quitar un hábito con cambios pendientes los aplica; al volver, el mínimo cuenta desde mañana', () => {
+  const e = partida();
+  const guitarra = M.crearActividad(e, { tipo: 'habito', nombre: 'Guitarra', stat: 'creatividad', dificultad: 'facil', frecuencia: { tipo: 'diaria' }, minimo: true }).actividad;
+  M.quitarActividad(e, guitarra.id);
+  assert.equal(guitarra.archivado, true);
+  assert.equal(guitarra.pendiente, null);
+  assert.equal(guitarra.minimo, true);
+  M.volverAPoner(e, guitarra.id);
+  assert.equal(guitarra.minimo, false);
+  assert.deepEqual(guitarra.pendiente.cambios, { minimo: true });
+});
+
 test('quitar una misión no quita vida (rendirse no tiene castigo por ahora)', () => {
   const e = partida();
   const m = M.crearActividad(e, { tipo: 'mision', nombre: 'Taller', stat: 'mente', dificultad: 'dificil', fecha: '2026-09-28' }).actividad;

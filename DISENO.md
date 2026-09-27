@@ -342,6 +342,7 @@ principio de su lista.
 ✅ Si la vida llega a 0, **muero**.
 
 ✅ La penalización es **configurable** (en **Ajustes**). Por defecto es **Hardcore**:
+🟡 El cambio se aplica al momento; si dejo Hardcore, el juego me pide confirmarlo.
 
 | Modo              | Qué pierdo |
 |-------------------|------------|
@@ -363,12 +364,14 @@ subtareas que ya hice. Los jefes vuelven a dar su XP cuando los termine.
 
 ✅ Se juega en el navegador del PC.
 ✅ Personaje con sprites sencillos hechos con código.
-🟡 HTML + CSS + JavaScript, sin servidor ni instalación.
-🟡 Los datos se guardan en el navegador (`localStorage`).
-🟡 **Exportar e importar una copia de seguridad** (un archivo `.json`). Si limpio los
+✅ HTML + CSS + JavaScript, sin servidor ni instalación: se abre `index.html` (ver `README.md`).
+✅ Los datos se guardan en el navegador (`localStorage`).
+✅ **Exportar e importar una copia de seguridad** (un archivo `.json`) en Ajustes. Si limpio los
 datos del navegador, se borra la partida. Sería una "muerte" que no merecí.
+🟡 Al recuperar una copia antigua, los días entre la copia y hoy **no se cuentan**
+(si no, recuperar una copia de hace una semana me mataría).
 
-🟡 **Días en que no abro el juego:** una página web solo funciona mientras está
+✅ **Días en que no abro el juego:** una página web solo funciona mientras está
 abierta. Por eso, al abrirla, el juego revisa todos los reinicios de las 3:00 a.m.
 y las fechas de entrega que pasaron desde la última vez, y aplica a cada uno el
 daño y las rachas que correspondan.
@@ -420,6 +423,8 @@ poner todo lo que el juego me pide hacer.
 ### 11.4 Editar
 
 - Se puede cambiar todo **menos el tipo** (si un hábito debía ser misión, se crea de nuevo).
+- 🟡 De un jefe tampoco se cambian, después de crearlo, la forma de hacerle daño, el hábito ligado ni la racha a lograr. Las subtareas ya hechas quedan fijas; se pueden añadir, renombrar o quitar las pendientes.
+- 🟡 Las misiones completadas o fallidas y los jefes derrotados o fallidos ya no se editan.
 - ✅ **Regla anti-trampa:** los cambios que afectan a la vida (dificultad, frecuencia, marcar o desmarcar como mínimo) **se aplican desde el siguiente reinicio (3:00 a.m.)**. Así no puedo, por ejemplo, quitarle el "mínimo" a un hábito a las 2:50 a.m. para no perder vida. El nombre y la nota cambian al momento.
 - 🟡 **Fecha de entrega de una misión:** se puede cambiar (a veces los profesores amplían el plazo), pero el juego pide confirmar y lo deja anotado en el historial.
 - 🟡 A un jefe por subtareas se le pueden añadir subtareas después; su barra de vida crece.

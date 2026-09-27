@@ -437,7 +437,7 @@ function cerrarDia(estado, d, eventos) {
 
   // 2. Racha
   if (protegido) {
-    avisar('racha', `Día protegido: tu racha de ${estado.racha} días se mantiene`);
+    if (estado.racha > 0) avisar('racha', `Día protegido: tu racha de ${estado.racha} días se mantiene`);
   } else if (todosCumplidos) {
     estado.racha++;
     if (estado.racha % 7 === 0 && estado.racha <= 35) {
@@ -730,6 +730,13 @@ function quitarActividad(estado, id) {
     act.pendiente = { desde: sumarDias(hoyDe(estado), 1), cambios };
     registrar(estado, `«${act.nombre}» se quitará mañana (hoy aún es mínimo)`);
     return ok({ programado: true });
+  }
+  // Al quitarla ya no cuenta para nada: los cambios pendientes se aplican ya
+  if (act.pendiente) {
+    const cambios = { ...act.pendiente.cambios };
+    delete cambios.archivado;
+    Object.assign(act, cambios);
+    act.pendiente = null;
   }
   act.archivado = true;
   act.quitadoEl = hoyDe(estado);
