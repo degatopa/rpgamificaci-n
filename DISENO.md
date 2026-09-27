@@ -1,8 +1,7 @@
 # Documento de diseño — RPG de hábitos
 
-> **Estado:** v0.5 — reglas cerradas. Nuevo: apartado de actividades (sección 11)
-> y bocetos de la interfaz (sección 12). Quedan unas preguntas sobre el apartado
-> de actividades (sección 13).
+> **Estado:** v0.6 — **diseño cerrado**. Ya empezó la programación (ver `README.md`).
+> Lo marcado con 🟡 son decisiones mías que se pueden ajustar al probar el juego.
 >
 > **Leyenda:**
 > ✅ = decidido · 🟡 = propuesta (se puede cambiar) · ❓ = falta decidir
@@ -86,10 +85,14 @@ cambiar por dibujos más elaborados.
 volver a poner** hábitos, misiones y jefes (ver sección 11).
 
 ✅ Frecuencias posibles: **diaria**, **semanal** (X veces por semana) y **mensual** (X veces por mes).
-🟡 Además, **días concretos** de la semana (ejemplo: solo lunes, miércoles y viernes).
+✅ Además, **días concretos** de la semana (ejemplo: solo lunes, miércoles y viernes).
+Si un hábito de días concretos es mínimo, solo quita vida los días que le tocan.
 
 🟡 Cada vez que marco un hábito semanal o mensual recibo su XP. La cuenta
 ("iglesia: 2/3 esta semana") sirve para los jefes de racha (ver 3.5).
+
+🟡 Cada hábito se marca **como mucho una vez al día**. Los semanales y mensuales
+se pueden marcar hasta completar su meta del periodo (ejemplo: 3 de 3).
 
 🟡 Puedo desmarcar un hábito el mismo día si lo marqué por error (se devuelven el XP y el oro).
 
@@ -107,7 +110,7 @@ volver a poner** hábitos, misiones y jefes (ver sección 11).
 
 ✅ En el apartado de actividades aparecen con un 🔒 candado. **No se pueden**
 quitar (ni siquiera temporalmente), cambiar de dificultad, cambiar de frecuencia
-ni dejar de ser mínimos. 🟡 Tampoco se pueden renombrar.
+ni dejar de ser mínimos. ✅ Tampoco se pueden renombrar.
 
 *Nota:* como los datos están en mi propio navegador, técnicamente siempre podría
 hacer trampa tocando el código. El candado es un **compromiso de honor**: el juego
@@ -327,7 +330,10 @@ de la lista y un botón **"Reclamar"** para marcar que ya me la di. Queda un
 historial de recompensas cobradas.
 
 🟡 Hay 8 cambios de rango y solo 3 recompensas grandes de ejemplo. Si una lista
-se acaba, el juego me avisa para que añada más.
+se acaba, el juego me avisa para que añada más. La siguiente que añada ocupa el hueco.
+
+🟡 Si muero en modo Hardcore, las recompensas que no había reclamado vuelven al
+principio de su lista.
 
 ---
 
@@ -414,7 +420,7 @@ poner todo lo que el juego me pide hacer.
 ### 11.4 Editar
 
 - Se puede cambiar todo **menos el tipo** (si un hábito debía ser misión, se crea de nuevo).
-- 🟡 **Regla anti-trampa:** los cambios que afectan a la vida (dificultad, frecuencia, marcar o desmarcar como mínimo) **se aplican desde el siguiente reinicio (3:00 a.m.)**. Así no puedo, por ejemplo, quitarle el "mínimo" a un hábito a las 2:50 a.m. para no perder vida. El nombre y la nota cambian al momento.
+- ✅ **Regla anti-trampa:** los cambios que afectan a la vida (dificultad, frecuencia, marcar o desmarcar como mínimo) **se aplican desde el siguiente reinicio (3:00 a.m.)**. Así no puedo, por ejemplo, quitarle el "mínimo" a un hábito a las 2:50 a.m. para no perder vida. El nombre y la nota cambian al momento.
 - 🟡 **Fecha de entrega de una misión:** se puede cambiar (a veces los profesores amplían el plazo), pero el juego pide confirmar y lo deja anotado en el historial.
 - 🟡 A un jefe por subtareas se le pueden añadir subtareas después; su barra de vida crece.
 
@@ -424,7 +430,9 @@ poner todo lo que el juego me pide hacer.
 - **Volver a poner:** desde Quitadas, vuelve con su historial.
 - **Borrar para siempre:** solo desde Quitadas, con confirmación. Se pierde su historial (el XP ya ganado se queda).
 - 🟡 Si quito un hábito que es **mínimo**, sigue contando para el día de hoy; deja de contar desde el siguiente reinicio.
-- 🟡 **Misiones y jefes:** el mismo día en que los creo los puedo borrar sin castigo (por si me equivoqué). Después, quitarlos cuenta como **rendirse**: pierdo la vida igual que si hubieran vencido.
+- ✅ **Misiones y jefes:** quitarlos **no quita vida** (por ahora, rendirse no tiene castigo).
+- 🟡 Si vuelvo a poner una misión o un jefe cuya fecha ya pasó, el juego me pide una fecha nueva.
+- 🟡 Si vuelvo a poner un hábito que era mínimo, vuelve a ser mínimo desde el día siguiente.
 - Los **sagrados** no tienen botones para editar, quitar ni borrar.
 
 ---
@@ -492,9 +500,11 @@ seguridad, e historial de muertes.
 
 ## 13. Preguntas abiertas
 
-1. **Rendirse:** ¿te parece bien que quitar una misión o un jefe cuente como vencido (con su daño), salvo el mismo día en que lo creaste?
-2. **Cambios desde mañana:** ¿aceptas que los cambios de dificultad, frecuencia o mínimo se apliquen desde el siguiente reinicio de las 3:00 a.m.?
-3. **Días concretos:** ¿te sirve la opción de elegir días de la semana (por ejemplo, solo lunes, miércoles y viernes)? Si ese hábito es mínimo, solo quitaría vida esos días.
-4. **Sagrados:** ¿tampoco se deben poder renombrar? (Propuesta: no.)
-5. **Nombre del juego:** en los bocetos puse "RPGamificación", como el repositorio. ¿Quieres otro nombre?
-6. **Bocetos:** ¿algo que cambiar del aspecto (colores, distribución, textos) antes de empezar a programar?
+Ninguna. ✅ Respuestas de la última ronda:
+
+1. Rendirse (quitar una misión o un jefe) **no quita vida** por ahora.
+2. Los cambios de dificultad, frecuencia o mínimo se aplican **desde el día siguiente**.
+3. **Días concretos:** sí.
+4. Los sagrados **no se pueden renombrar**.
+5. El juego se llama **RPGamificación**.
+6. Los bocetos están bien; se revisarán más adelante.
