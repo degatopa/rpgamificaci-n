@@ -1,7 +1,6 @@
 # Documento de diseño — RPG de hábitos
 
-> **Estado:** borrador v0.2. La mayoría de las reglas ya están decididas; quedan
-> unas pocas preguntas al final.
+> **Estado:** borrador v0.3. Casi todo está decidido; quedan 3 preguntas al final.
 >
 > **Leyenda:**
 > ✅ = decidido · 🟡 = propuesta (se puede cambiar) · ❓ = falta decidir
@@ -14,9 +13,13 @@
 personaje es un **caballero en pixel art** que asciende, como en una película,
 de **soldado raso a emperador** a medida que cumplo mis hábitos.
 
-- Cumplir un hábito = **derrotar a un enemigo** y ganar XP.
+- Cumplir un hábito = **derrotar a un enemigo** y ganar XP y oro.
 - Las misiones grandes son **jefes finales** con su propia barra de vida.
-- Si no cumplo mis **mínimos diarios**, pierdo vida. Si la vida llega a 0, **muero** y pierdo mi progreso.
+- Lo que no cumplo me **quita vida**. La vida **solo** se recupera con pociones caras.
+- Si la vida llega a 0, **muero** y pierdo todo mi progreso.
+
+✅ **Filosofía:** el juego debe presionar de verdad. No hay modo descanso ni
+regeneración gratis: cada error se paga con el esfuerzo (XP y oro) que ya hice.
 
 ✅ Plataforma: **PC** (navegador). La versión para celular se verá más adelante.
 
@@ -35,22 +38,28 @@ de **soldado raso a emperador** a medida que cumplo mis hábitos.
 | 1–4     | Soldado raso  | inicio                         |
 | 5–9     | Escudero      | ~1,5 semanas                   |
 | 10–14   | Caballero     | ~3 semanas                     |
-| 15–19   | Capitán       | ~5–6 semanas                   |
+| 15–19   | Capitán       | ~6 semanas                     |
 | 20–29   | Comandante    | ~2 meses                       |
 | 30–39   | Señor feudal  | ~3,5 meses                     |
-| 40–49   | Duque         | ~5,5 meses                     |
-| 50–59   | Rey           | ~8 meses                       |
-| 60+     | Emperador     | **~11,5 meses**                |
+| 40–49   | Duque         | ~6 meses                       |
+| 50–59   | Rey           | ~8,5 meses                     |
+| 60+     | Emperador     | **~12 meses**                  |
 
 Los tiempos salen de la fórmula de la sección 4. Suponen que cumplo más o menos
-el 85 % de mis hábitos y que mantengo la racha de mínimos. Los jefes finales y
-los multiplicadores de la tienda acortan el camino.
+el 85 % de mis hábitos y que mantengo la racha de mínimos. Los jefes finales
+acortan el camino, y comprar pociones y multiplicadores lo alarga.
 
 ✅ Después del nivel 60 se puede seguir subiendo de nivel (el rango sigue siendo Emperador).
 
-### 2.2 Accesorios
+✅ Si bajo de nivel (ver 6.1) y caigo por debajo del mínimo de mi rango, **pierdo el rango** y el caballero vuelve a su aspecto anterior.
 
-✅ Al personaje se le pueden poner sombreros y accesorios. Se añaden a la tienda **más adelante** (no en la primera versión).
+### 2.2 Aspecto (sprites)
+
+✅ Para empezar, **sprites sencillos hechos con código**: un caballero en pixel art
+dibujado con cuadraditos, con una variante por rango. Más adelante se pueden
+cambiar por dibujos más elaborados.
+
+✅ Sombreros y accesorios: se añaden **más adelante** (no en la primera versión).
 
 ### 2.3 Estadísticas
 
@@ -61,7 +70,6 @@ los multiplicadores de la tienda acortan el camino.
 ✅ Cuando gano XP en un hábito, ese XP cuenta **a la vez** para la estadística del hábito y para el nivel general.
 
 🟡 Fórmula de nivel de estadística: pasar del nivel `N` al `N+1` cuesta `50 + 10 × N` XP.
-Como cada estadística recibe solo parte del XP, su curva es más barata que la del nivel general.
 
 ---
 
@@ -71,57 +79,79 @@ Como cada estadística recibe solo parte del XP, su curva es más barata que la 
 
 ✅ Cada hábito está ligado a **una** estadística.
 
-✅ Todo se puede **agregar, editar y borrar** desde una **pantalla de configuración**:
-hábitos, estadística, dificultad, frecuencia y si es mínimo o no.
+✅ Hay una **pantalla de configuración** donde puedo **agregar, editar y borrar**
+hábitos: nombre, estadística, dificultad, frecuencia y si es mínimo o no.
 
 ✅ Frecuencias posibles: **diaria**, **semanal** (X veces por semana) y **mensual** (X veces por mes).
 
-🟡 Cada vez que marco un hábito semanal o mensual recibo su XP. Llevar la cuenta
-(por ejemplo "iglesia: 2/3 esta semana") sirve para los jefes de racha (ver 3.4).
+🟡 Cada vez que marco un hábito semanal o mensual recibo su XP. La cuenta
+("iglesia: 2/3 esta semana") sirve para los jefes de racha (ver 3.5).
 
-🟡 Puedo desmarcar un hábito el mismo día si lo marqué por error (se devuelve el XP y el oro).
+🟡 Puedo desmarcar un hábito el mismo día si lo marqué por error (se devuelven el XP y el oro).
 
-### 3.2 Dificultad = tipo de enemigo
+### 3.2 Hábitos sagrados (no se pueden quitar)
+
+✅ Hay **4 hábitos fijos** que **no se pueden borrar** por más que quiera:
+
+| Hábito sagrado                     | Estadística  | Frecuencia | Dificultad |
+|------------------------------------|--------------|------------|------------|
+| Leer la Biblia 10 min              | Espíritu     | Diaria     | Media      |
+| Orar 30 min                        | Espíritu     | Diaria     | Media      |
+| Ejercicios para enderezar la espalda | Cuerpo     | Diaria     | Media      |
+| Escribir al menos una página       | Creatividad  | Diaria     | Media      |
+
+🟡 En la configuración aparecen con un 🔒 candado. **No se pueden** borrar,
+pausar, cambiar de dificultad ni cambiar de frecuencia. Tampoco se les puede
+quitar la marca de mínimo, si la tienen (ver pregunta 1).
+
+*Nota:* como los datos están en mi propio navegador, técnicamente siempre podría
+hacer trampa tocando el código. El candado es un **compromiso de honor**: el juego
+no ofrece ninguna forma de quitarlos.
+
+### 3.3 Dificultad = tipo de enemigo
 
 ✅
 
-| Dificultad | Enemigo          | XP  | Oro (🟡) |
-|------------|------------------|-----|---------|
-| Fácil      | Enemigo común    | 10  | 2       |
-| Media      | Enemigo élite    | 20  | 5       |
-| Difícil    | Mini jefe        | 40  | 10      |
+| Dificultad | Enemigo          | XP al cumplir | Oro al cumplir | Vida que pierdo si no lo cumplo* |
+|------------|------------------|---------------|----------------|----------------------------------|
+| Fácil      | Enemigo común    | 10            | 5              | −5 HP                            |
+| Media      | Enemigo élite    | 20            | 10             | −10 HP                           |
+| Difícil    | Mini jefe        | 50            | 20             | −25 HP                           |
 
-### 3.3 Hábitos iniciales
+\* Solo quitan vida los **mínimos diarios** y las **misiones vencidas** (ver 5.1).
 
-✅ Lista inicial (dificultad 🟡 propuesta por mí, se puede cambiar en la configuración):
+### 3.4 Hábitos iniciales
 
-| Hábito                                 | Estadística  | Frecuencia    | Dificultad (🟡) | Mínimo |
-|----------------------------------------|--------------|---------------|-----------------|--------|
-| Ejercicios para enderezar la espalda   | Cuerpo       | Diaria        | Fácil           | ✅ Sí  |
-| Crema del acné en la noche             | Cuerpo       | Diaria        | Fácil           | ✅ Sí  |
-| Actividad física 20 min                | Cuerpo       | Diaria        | Media           | ✅ Sí  |
-| Levantarme a la misma hora             | Cuerpo       | Diaria        | Media           | No     |
-| Comer a horas decentes                 | Cuerpo       | Diaria        | Fácil           | No     |
-| Leer la Biblia 10 min                  | Espíritu     | Diaria        | Fácil           | ✅ Sí  |
-| Orar 30 min                            | Espíritu     | Diaria        | Media           | No     |
-| Ir a la iglesia                        | Espíritu     | 3 × semana    | Media           | No     |
-| Aprender algo nuevo 30 min             | Creatividad  | Diaria        | Media           | No     |
-| Tareas de la universidad               | Mente        | Misiones (ver 3.5) | Según la tarea | No |
+✅ Lista inicial (las dificultades que no diste son 🟡 propuestas mías):
 
-✅ Los **mínimos diarios** también son configurables.
+| Hábito                               | Estadística  | Frecuencia         | Dificultad     | Mínimo | Sagrado |
+|--------------------------------------|--------------|--------------------|----------------|--------|---------|
+| Leer la Biblia 10 min                | Espíritu     | Diaria             | Media ✅       | ✅ Sí  | 🔒      |
+| Orar 30 min                          | Espíritu     | Diaria             | Media ✅       | ❓     | 🔒      |
+| Ejercicios para enderezar la espalda | Cuerpo       | Diaria             | Media ✅       | ✅ Sí  | 🔒      |
+| Escribir al menos una página         | Creatividad  | Diaria             | Media ✅       | ❓     | 🔒      |
+| Crema del acné en la noche           | Cuerpo       | Diaria             | Fácil 🟡       | ✅ Sí  |         |
+| Actividad física 20 min              | Cuerpo       | Diaria             | Media 🟡       | ✅ Sí  |         |
+| Levantarme a la misma hora           | Cuerpo       | Diaria             | Media 🟡       | No     |         |
+| Comer a horas decentes               | Cuerpo       | Diaria             | Fácil 🟡       | No     |         |
+| Ir a la iglesia                      | Espíritu     | 3 × semana         | Media 🟡       | No     |         |
+| Aprender algo nuevo 30 min           | Creatividad  | Diaria             | Media 🟡       | No     |         |
+| Tareas de la universidad             | Mente        | Misiones (ver 3.6) | Según la tarea | —      |         |
 
-### 3.4 Jefes finales
+✅ Los **mínimos diarios** son configurables (salvo lo que diga la pregunta 1 sobre los sagrados).
+
+### 3.5 Jefes finales
 
 ✅ Misiones grandes con **su propia barra de vida**. Dan **mucha XP** y una **recompensa especial**.
 
-🟡 Hay dos tipos de jefe:
+✅ Hay dos tipos de jefe:
 
 1. **Jefe por subtareas.** Divido la misión en subtareas. Cada subtarea completada le quita vida al jefe. Cuando todas están hechas, el jefe cae.
    - Ejemplos: *Terminar la tesis*, *Escribir el guion del cortometraje*.
 2. **Jefe por racha.** Está ligado a un hábito. Recibe daño cada vez que cumplo la meta de ese hábito, y se **cura por completo** si rompo la racha.
    - Ejemplo: *Un mes de racha yendo a la iglesia* = 4 semanas seguidas cumpliendo 3/3.
 
-🟡 Cada jefe tiene una estadística y un tamaño:
+✅ Cada jefe tiene una estadística y un tamaño:
 
 | Tamaño  | XP al derrotarlo | Oro | Ejemplo            |
 |---------|------------------|-----|--------------------|
@@ -129,15 +159,22 @@ hábitos, estadística, dificultad, frecuencia y si es mínimo o no.
 | Grande  | 500              | 120 | Guion del corto    |
 | Épico   | 1000             | 250 | La tesis           |
 
-🟡 Cada subtarea da además el XP de un enemigo común (10 XP).
+✅ Cada subtarea da además el XP y el oro de un enemigo común (10 XP, 5 de oro).
 
 ✅ La **recompensa especial** de cada jefe la escribo yo al crearlo.
 
-### 3.5 Misiones de la universidad (Mente)
+🟡 Un jefe puede tener **fecha límite** (opcional). Si vence sin derrotarlo, ver 5.1.
 
-✅ Las tareas de la universidad son **misiones con fecha de entrega**.
+### 3.6 Misiones de la universidad (Mente)
 
-🟡 Al crear una misión elijo su dificultad (común / élite / mini jefe). Si es muy grande, la convierto en jefe final.
+✅ Las tareas de la universidad son **misiones con fecha de entrega**. Al crear una
+misión elijo su tamaño (pequeña / mediana / grande = común / élite / mini jefe).
+Si es muy grande, la convierto en jefe final.
+
+✅ Si la fecha de entrega pasa sin completarla, **pierdo vida según su tamaño** (ver 5.1).
+
+🟡 Después de vencer, la misión queda marcada como **"fallida"**. Todavía puedo
+completarla, pero solo recibo la **mitad** de XP y oro.
 
 ---
 
@@ -145,87 +182,113 @@ hábitos, estadística, dificultad, frecuencia y si es mínimo o no.
 
 ✅ Todo el XP ganado (de cualquier estadística) suma al nivel general.
 
-🟡 Fórmula: pasar del nivel `N` al `N+1` cuesta **`200 + 30 × N` XP**.
-Está ajustada para que llegar a Emperador (nivel 60) tome unos 11–12 meses.
+🟡 Fórmula: pasar del nivel `N` al `N+1` cuesta **`250 + 40 × N` XP**.
+Está ajustada para que llegar a Emperador (nivel 60) tome más o menos un año.
 
 | Nivel | XP para el siguiente | XP total acumulado para llegar |
 |-------|----------------------|--------------------------------|
-| 1     | 230                  | 0                              |
-| 5     | 350                  | 1 100                          |
-| 10    | 500                  | 3 150                          |
-| 20    | 800                  | 9 500                          |
-| 30    | 1 100                | 18 850                         |
-| 40    | 1 400                | 31 200                         |
-| 50    | 1 700                | 46 550                         |
-| 60    | 2 000                | 64 900                         |
+| 1     | 290                  | 0                              |
+| 5     | 450                  | 1 400                          |
+| 10    | 650                  | 4 050                          |
+| 20    | 1 050                | 12 350                         |
+| 30    | 1 450                | 24 650                         |
+| 40    | 1 850                | 40 950                         |
+| 50    | 2 250                | 61 250                         |
+| 60    | 2 650                | 85 550                         |
 
-*Cálculo:* con los hábitos iniciales, un día perfecto da unos 150 XP. Cumpliendo el
-~85 % son unos 128 XP al día, y con la racha se llega a unos 190. Eso da ~11,5 meses
-hasta el nivel 60.
+*Cálculo:* con los hábitos iniciales y los nuevos valores, un día perfecto da unos
+190 XP y unos 95 de oro. Cumpliendo el ~85 % son unos 160 XP y 80 de oro al día. Con
+el bonus máximo de racha (+50 %) se llega a unos 240 XP. Eso da ~12 meses hasta el nivel 60.
+
+✅ Si gasto XP en la tienda, **puedo bajar de nivel** (ver 6.1).
 
 ---
 
 ## 5. Vida (HP)
 
-✅ La vida solo baja por **no cumplir mínimos diarios**.
+✅ Vida máxima: **100 HP**.
 
-🟡 Vida máxima: **100 HP**.
-🟡 Al reiniciarse el día pierdo **10 HP por cada mínimo no cumplido**. Con 4 mínimos, un día sin cumplir ninguno quita 40 HP.
+✅ La vida **no se recupera sola**, solo con la **poción de vida** (ver 6.1).
 
-✅ La vida **no se recupera sola**, solo con **pociones** (ver 6).
+✅ **No hay modo descanso.** Si un día estoy enfermo o mal, el daño se paga con
+pociones. La única protección es la **poción de descanso**, que se compra (ver 6.2).
 
 ✅ **Reinicio del día: 3:00 a.m.** Lo que marque entre las 00:00 y las 02:59 cuenta para el día anterior.
+
+### 5.1 Qué quita vida
+
+✅ Pierdo vida por cada cosa que no complete, **según su tamaño**:
+
+| Qué no cumplí                          | Cuándo se aplica            | Daño                       |
+|----------------------------------------|-----------------------------|----------------------------|
+| Mínimo diario fácil                    | Reinicio de las 3:00 a.m.   | −5 HP                      |
+| Mínimo diario medio                    | Reinicio de las 3:00 a.m.   | −10 HP                     |
+| Mínimo diario difícil                  | Reinicio de las 3:00 a.m.   | −25 HP                     |
+| Misión pequeña vencida                 | Al pasar la fecha de entrega | −5 HP                     |
+| Misión mediana vencida                 | Al pasar la fecha de entrega | −10 HP                    |
+| Misión grande vencida                  | Al pasar la fecha de entrega | −25 HP                    |
+| Jefe final con fecha límite vencida 🟡 | Al pasar la fecha límite    | −50 HP                     |
+
+🟡 Los hábitos que **no** son mínimos no quitan vida (solo dejan de dar XP y oro).
+
+**Ejemplo:** con los mínimos actuales (Biblia, espalda y actividad física medios;
+crema fácil), un día sin cumplir ninguno quita **35 HP**. Si orar y escribir también
+fueran mínimos, serían **55 HP**: dos días malos seguidos me dejarían casi muerto.
 
 ---
 
 ## 6. Tienda
 
-### 6.1 Pociones de vida (se pagan con XP)
+✅ Todo en la tienda es **caro a propósito**: se paga con **XP y oro a la vez**,
+para que cada error cueste parte del esfuerzo ya hecho.
 
-✅ Las pociones se pagan con XP.
+| Objeto                   | Efecto                                              | Precio                  |
+|--------------------------|-----------------------------------------------------|-------------------------|
+| **Poción de vida**       | Llena la vida al **máximo** (100 HP)                | **200 XP + 1 000 oro**  |
+| **Poción de descanso**   | Ese día **no pierdo vida** aunque no haga nada      | **100 XP + 300 oro**    |
+| **Multiplicador de XP**  | Multiplica el XP ganado (ver pregunta 2)            | **200 XP + 1 000 oro**  |
 
-**Problema:** si pagar con XP resta de mi XP total, puedo **bajar de nivel**, e
-incluso **perder un rango**. Eso tiene varias consecuencias raras:
-- El personaje "pierde" armadura por comprar una poción.
-- Podría volver a cobrar una recompensa real de un nivel que ya había alcanzado.
-- Puede sentirse como un castigo doble: me quedo sin vida y encima bajo de nivel.
+Con unos 80 de oro al día, una poción de vida cuesta **~12 días de oro**, una de
+descanso **~4 días** y un multiplicador **~12 días**.
 
-**Opciones:**
+### 6.1 Poción de vida y bajar de nivel
 
-| Opción | Cómo funciona | Pros | Contras |
-|--------|---------------|------|---------|
-| A. Restar del XP total | Se resta y puedo bajar de nivel | Muy simple | Los problemas de arriba |
-| **B. Solo XP de la barra actual** 🟡 **(recomendada)** | Solo puedo gastar el XP que llevo **dentro de mi nivel actual**. La barra retrocede, pero **nunca bajo de nivel** | Hay un costo real (tardo más en subir) y nunca pierdo rango | Justo después de subir de nivel la barra está casi vacía y no me alcanza |
-| C. Dos contadores | "XP total" (define el nivel, nunca baja) y "XP gastable" | Nunca bajo de nivel | En la práctica es otra moneda igual al oro |
+✅ El XP se resta del **XP total**, así que **puedo bajar de nivel**, e incluso de rango.
 
-🟡 Propuesta con la opción B:
-- **Poción de vida:** +25 HP, cuesta **150 XP** (aprox. un día de hábitos).
-- Puedo **comprar pociones por adelantado** y guardarlas en el inventario, para no quedarme sin XP en la barra justo cuando lo necesito.
+🟡 Para que esto no se pueda aprovechar mal:
+- El XP se resta **solo del nivel general**. Los niveles de las estadísticas no bajan, porque reflejan lo que realmente hice.
+- **Las recompensas reales se cobran una sola vez por nivel.** El juego guarda mi **nivel récord**. Si bajo del 31 al 29 y vuelvo a subir al 30, no me toca otra recompensa: solo al superar mi récord.
+- No se puede comprar si no tengo suficiente XP y oro. (No existe XP negativo: el mínimo es nivel 1 con 0 XP).
 
-### 6.2 Multiplicadores de XP
+### 6.2 Poción de descanso
 
-✅ La tienda vende multiplicadores de XP.
+✅ Protege un día entero: esa noche, a las 3:00 a.m., **no pierdo vida**.
 
-🟡 Se pagan con **oro**:
-- **Multiplicador ×1,5** hasta el siguiente reinicio del día (3:00 a.m.): 100 de oro.
-- **Multiplicador ×2** hasta el siguiente reinicio: 250 de oro.
-- 🟡 Se combinan multiplicando con el bonus de racha (ejemplo: racha +20 % × poción ×1,5 = ×1,8).
+🟡 Reglas:
+- Hay que **tomarla antes** del reinicio de las 3:00 a.m. del día que quiero proteger. No sirve para días que ya pasaron.
+- Protege también de las misiones que venzan ese día.
+- La **racha no se rompe**, pero ese día tampoco suma a la racha (queda "congelada").
+- Se pueden comprar por adelantado y guardar en el inventario.
 
-### 6.3 Oro
+### 6.3 Multiplicador de XP
 
-🟡 Se gana oro al derrotar enemigos (tabla 3.2) y jefes (tabla 3.4).
-Con los hábitos iniciales son unos 30 de oro al día.
-🟡 El oro se usa para los multiplicadores y, más adelante, para sombreros y accesorios.
+✅ Se vende en la tienda por 200 XP + 1 000 oro. ❓ Falta decidir cuánto multiplica y cuánto dura (pregunta 2).
+
+🟡 Se combina multiplicando con el bonus de racha (ejemplo: racha +50 % × multiplicador ×2 = ×3).
+
+### 6.4 Oro
+
+✅ Se gana oro al derrotar enemigos (tabla 3.3) y jefes (tabla 3.5).
+✅ El oro se usa para pociones, multiplicadores y, más adelante, sombreros y accesorios.
 
 ---
 
 ## 7. Rachas
 
 ✅ Una racha es la cantidad de **días seguidos cumpliendo todos los mínimos**.
-✅ Da **+10 % de XP por cada 7 días** de racha.
-🟡 **Tope: +50 %** (a partir de 35 días). Sin tope, al cabo de un año el bonus
-sería de +520 % y el ritmo de la sección 4 dejaría de tener sentido.
-🟡 La racha se rompe con **un solo** mínimo no cumplido, y el bonus vuelve a 0 %.
+✅ Da **+10 % de XP por cada 7 días** de racha, con un **tope de +50 %** (a partir de 35 días).
+✅ La racha se rompe con **un solo** mínimo no cumplido, y el bonus vuelve a 0 %.
+✅ Un día protegido con poción de descanso no rompe la racha, pero tampoco la aumenta.
 
 ---
 
@@ -233,21 +296,19 @@ sería de +520 % y el ritmo de la sección 4 dejaría de tener sentido.
 
 ✅ **Pequeña** cada 5 niveles y **grande** con cada cambio de rango. Todas editables.
 
+✅ **Cuando coinciden** (niveles 5, 10, 15, 20, 30, 40, 50 y 60): recibo **las dos**.
+
 ✅ Ejemplos iniciales:
 - **Pequeñas:** ver una película, comer algo que me guste, una salida.
 - **Grandes:** cuerdas nuevas para la guitarra, un curso de colorización, un accesorio para la cámara.
 
-🟡 **Cuando coinciden** (niveles 5, 10, 15, 20, 30, 40, 50, 60 son múltiplos de 5 *y*
-cambios de rango): recibo **solo la grande**. Por eso las pequeñas salen en los
-niveles 25, 35, 45, 55, 65…
-
 🟡 Funcionamiento: cada tipo de recompensa es una **lista ordenada** que edito en
-la configuración. Al llegar al nivel, el juego me muestra la siguiente de la
-lista y un botón **"Reclamar"** para marcar que ya me la di. Queda un historial
-de recompensas cobradas.
+la configuración. Al llegar a un nivel récord, el juego me muestra la siguiente
+de la lista y un botón **"Reclamar"** para marcar que ya me la di. Queda un
+historial de recompensas cobradas.
 
-🟡 Hay 8 cambios de rango y solo 3 recompensas grandes de ejemplo. Si la lista se
-acaba, el juego me avisa para que añada más.
+🟡 Hay 8 cambios de rango y solo 3 recompensas grandes de ejemplo. Si una lista
+se acaba, el juego me avisa para que añada más.
 
 ---
 
@@ -255,17 +316,19 @@ acaba, el juego me avisa para que añada más.
 
 ✅ Si la vida llega a 0, **muero**.
 
-✅ La penalización es **configurable**. Por defecto (elegida por mí) es **Hardcore**:
+✅ La penalización es **configurable**. Por defecto es **Hardcore**:
 
-| Modo (🟡 nombres)   | Qué pierdo |
-|---------------------|------------|
-| **Hardcore** ✅ (por defecto) | **Todo**: nivel general, niveles de estadísticas, XP, oro, objetos, racha |
-| Duro                | Vuelvo al inicio de mi rango actual y pierdo oro y objetos |
-| Suave               | Pierdo la mitad del oro y los objetos, sin bajar de nivel |
+| Modo              | Qué pierdo |
+|-------------------|------------|
+| **Hardcore** ✅ (por defecto) | **Todo**: nivel general, niveles de estadísticas, XP, oro, objetos, racha y nivel récord |
+| Duro 🟡           | Vuelvo al inicio de mi rango actual y pierdo oro y objetos |
+| Suave 🟡          | Pierdo la mitad del oro y los objetos, sin bajar de nivel |
 
-🟡 Tras morir la vida vuelve a 100 HP. **No se borra** la configuración: hábitos,
-mínimos, lista de recompensas y jefes (con sus subtareas hechas, porque la tesis
-sigue avanzada en la vida real). Los jefes vuelven a dar su XP cuando los termine.
+🟡 Tras morir la vida vuelve a 100 HP. **No se borra** la configuración: hábitos
+(incluidos los sagrados), mínimos, lista de recompensas y jefes, con las
+subtareas que ya hice. Los jefes vuelven a dar su XP cuando los termine.
+
+🟡 Como el nivel récord también se pierde, **las recompensas reales se pueden volver a ganar** después de morir.
 
 🟡 Queda registrado un **historial de muertes** (fecha y nivel alcanzado), como en los juegos *roguelike*.
 
@@ -274,6 +337,7 @@ sigue avanzada en la vida real). Los jefes vuelven a dar su XP cuando los termin
 ## 10. Aspectos técnicos
 
 ✅ Se juega en el navegador del PC.
+✅ Personaje con sprites sencillos hechos con código.
 🟡 HTML + CSS + JavaScript, sin servidor ni instalación.
 🟡 Los datos se guardan en el navegador (`localStorage`).
 🟡 **Exportar e importar una copia de seguridad** (un archivo `.json`). Si limpio los
@@ -281,18 +345,13 @@ datos del navegador, se borra la partida. Sería una "muerte" que no merecí.
 
 🟡 **Días en que no abro el juego:** una página web solo funciona mientras está
 abierta. Por eso, al abrirla, el juego revisa todos los reinicios de las 3:00 a.m.
-que pasaron desde la última vez y aplica a cada uno el daño y las rachas que
-correspondan.
+y las fechas de entrega que pasaron desde la última vez, y aplica a cada uno el
+daño y las rachas que correspondan.
 
 ---
 
 ## 11. Preguntas abiertas
 
-1. **Pociones:** ¿aceptas la **opción B** (solo se gasta el XP de la barra actual y nunca se baja de nivel)? ¿Te parecen bien +25 HP por 150 XP?
-2. **Oro:** en tus respuestas no lo mencionaste. ¿Lo mantengo para los multiplicadores y los accesorios, o quieres que **todo** se pague con XP?
-3. **Tope de racha:** ¿aceptas el tope de +50 %? Si no, llegarás a Emperador mucho antes de un año.
-4. **Fecha de entrega vencida:** ¿qué pasa si una misión de la universidad vence sin completarse? (Sugerencia: pierdes 10 HP y la misión queda marcada como "fallida", pero puedes seguir completándola por la mitad de XP).
-5. **Días especiales:** ¿quieres un **modo descanso** para días de enfermedad o viaje, en el que los mínimos no quiten vida (con un límite, por ejemplo 3 días al mes)? En modo Hardcore, una gripe fuerte de 3 días podría matarte.
-6. **Recompensas que coinciden:** en los niveles con cambio de rango, ¿solo la grande (mi propuesta) o las dos?
-7. **Pixel art:** ¿quién hace los dibujos del caballero (9 rangos)? Opciones: dibujarlos tú, usar recursos gratuitos de internet o que yo genere sprites sencillos con código para empezar.
-8. **Confirmar valores 🟡:** 100 HP, −10 HP por mínimo, oro por enemigo, XP de los jefes y dificultades de los hábitos iniciales. ¿Algo que cambiar?
+1. **Sagrados y mínimos:** Biblia y espalda ya eran mínimos. ¿**Orar 30 min** y **escribir una página** también deben ser mínimos (quitar vida si no los hago)? Si la respuesta es sí, un día sin hacer nada quitaría 55 HP en vez de 35.
+2. **Multiplicador de XP:** con 200 XP de precio, un multiplicador ×2 que dure **un solo día** me haría **perder** XP: gano unos +160 extra y pago 200. Propuesta: **×2 durante 7 días** (unos +1 100 XP extra, ganancia neta de ~900). ¿Te parece, u otra combinación?
+3. **Confirmar los 🟡 que quedan:** jefe vencido −50 HP, misión fallida a mitad de XP, la poción de descanso protege también de misiones vencidas, y las dificultades propuestas para los hábitos no sagrados.
